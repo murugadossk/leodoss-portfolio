@@ -4,71 +4,1648 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="Leo — Visual Creator & Digital Creative Portfolio">
-<title>Leo — Visual Creator</title>
+<title>LEO — Visual Creator</title>
+
 <style>
-:root{--bg:#080808;--text:#f5f5f5;--muted:#a3a3a3;--line:#242424;--card:#111}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif}
-a{color:inherit;text-decoration:none}.wrap{width:min(1120px,92%);margin:auto}
-nav{position:sticky;top:0;z-index:5;background:rgba(8,8,8,.78);backdrop-filter:blur(16px);border-bottom:1px solid #171717}
-.nav{height:70px;display:flex;align-items:center;justify-content:space-between}.logo{font-weight:900;letter-spacing:.18em}.links{display:flex;gap:25px;color:#aaa;font-size:14px}.links a:hover{color:#fff}
-.hero{min-height:90vh;display:flex;align-items:center;padding:70px 0}.heroGrid{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center}
-.eyebrow{text-transform:uppercase;letter-spacing:.25em;color:#999;font-size:11px}.hero h1{font-size:clamp(60px,9vw,120px);line-height:.84;letter-spacing:-.07em;margin:18px 0 25px}.hero p{max-width:620px;color:#aaa;font-size:18px;line-height:1.7}
-.btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}.btn{padding:13px 18px;border:1px solid #333;border-radius:999px;font-weight:750;font-size:14px}.btn.primary{background:#fff;color:#000;border-color:#fff}
-.heroImg{height:560px;border-radius:28px;overflow:hidden;border:1px solid var(--line);background:#151515}.heroImg img{width:100%;height:100%;object-fit:cover;object-position:center}
-section{padding:95px 0;border-top:1px solid #171717}.head{display:flex;justify-content:space-between;gap:30px;align-items:end;margin-bottom:32px}.head h2{font-size:clamp(38px,6vw,68px);letter-spacing:-.055em;margin:0}.head p{max-width:430px;color:#999}
-.about{display:grid;grid-template-columns:1fr 1fr;gap:18px}.card{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:28px}.card p{color:#aaa;line-height:1.8}.skills{display:flex;gap:9px;flex-wrap:wrap;margin-top:20px}.skill{border:1px solid #2b2b2b;border-radius:999px;padding:8px 11px;color:#ccc;font-size:13px}
-.gallery{columns:3 260px;column-gap:16px}.item{break-inside:avoid;margin:0 0 16px;border-radius:20px;overflow:hidden;border:1px solid var(--line);background:#111}.item img{display:block;width:100%;height:auto;transition:transform .35s}.item:hover img{transform:scale(1.025)}
-.contact{background:#f3f3f3;color:#080808;border-radius:30px;padding:70px 30px;text-align:center}.contact h2{font-size:clamp(42px,7vw,78px);line-height:.9;letter-spacing:-.06em;margin:0}.contact p{max-width:550px;margin:20px auto;color:#444}.contact .btn{border-color:#111}
-footer{padding:35px 0 55px;color:#777;font-size:13px;display:flex;justify-content:space-between}
-@media(max-width:800px){.links{display:none}.hero{padding:55px 0}.heroGrid,.about{grid-template-columns:1fr}.heroImg{height:420px}.head{display:block}.head p{margin-top:12px}footer{display:block}footer div+div{margin-top:8px}}
+:root{
+  --bg:#070707;
+  --text:#f5f5f2;
+  --muted:#999;
+  --line:#242424;
+  --soft:#111;
+  --white:#fff;
+}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:Inter,Arial,Helvetica,sans-serif;
+  overflow-x:hidden;
+}
+
+body.lock{
+  overflow:hidden;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+img{
+  display:block;
+  width:100%;
+}
+
+button{
+  font:inherit;
+}
+
+.wrap{
+  width:min(1180px,90%);
+  margin:auto;
+}
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+nav{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  z-index:100;
+  background:rgba(7,7,7,.45);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.nav{
+  height:74px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.logo{
+  font-size:19px;
+  font-weight:900;
+  letter-spacing:.22em;
+}
+
+.links{
+  display:flex;
+  gap:30px;
+}
+
+.links a{
+  color:#aaa;
+  font-size:10px;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  transition:.3s;
+}
+
+.links a:hover{
+  color:#fff;
+}
+
+.menu{
+  display:none;
+  border:0;
+  background:none;
+  color:#fff;
+  font-size:25px;
+  cursor:pointer;
+}
+
+.mobile-menu{
+  display:none;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+  min-height:100svh;
+  position:relative;
+  overflow:hidden;
+  display:flex;
+  align-items:flex-end;
+  padding:120px 0 70px;
+}
+
+.hero-image{
+  position:absolute;
+  inset:0;
+  z-index:0;
+}
+
+.hero-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  filter:brightness(.72);
+  transform:scale(1.02);
+}
+
+.hero-overlay{
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0,0,0,.72) 0%,
+      rgba(0,0,0,.25) 55%,
+      rgba(0,0,0,.15) 100%
+    ),
+    linear-gradient(
+      0deg,
+      rgba(0,0,0,.65),
+      transparent 50%
+    );
+}
+
+.hero-content{
+  position:relative;
+  z-index:2;
+  width:100%;
+}
+
+.eyebrow{
+  color:#bbb;
+  font-size:10px;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+}
+
+.hero h1{
+  margin-top:22px;
+  font-size:clamp(65px,12vw,170px);
+  line-height:.76;
+  letter-spacing:-.08em;
+  font-weight:900;
+}
+
+.hero h1 span{
+  display:block;
+}
+
+.hero h1 span:nth-child(2){
+  padding-left:8vw;
+}
+
+.hero h1 span:nth-child(3){
+  padding-left:2vw;
+}
+
+.hero-description{
+  max-width:510px;
+  margin-top:35px;
+  color:#ddd;
+  font-size:15px;
+  line-height:1.75;
+}
+
+.hero-buttons{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:28px;
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:44px;
+  padding:0 20px;
+  border:1px solid rgba(255,255,255,.35);
+  border-radius:999px;
+  color:#fff;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+  transition:.3s;
+}
+
+.btn:hover{
+  background:#fff;
+  color:#000;
+  border-color:#fff;
+  transform:translateY(-2px);
+}
+
+.btn.white{
+  background:#fff;
+  color:#000;
+  border-color:#fff;
+}
+
+
+/* =========================
+   SECTION
+========================= */
+
+section{
+  padding:120px 0;
+  border-top:1px solid #181818;
+}
+
+.section-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  gap:35px;
+  margin-bottom:55px;
+}
+
+.section-number{
+  color:#777;
+  font-size:10px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  margin-bottom:15px;
+}
+
+.section-head h2{
+  font-size:clamp(48px,7vw,90px);
+  line-height:.85;
+  letter-spacing:-.07em;
+}
+
+.section-head p{
+  max-width:420px;
+  color:#888;
+  font-size:14px;
+  line-height:1.7;
+}
+
+em{
+  font-family:Georgia,serif;
+  font-weight:400;
+}
+
+
+/* =========================
+   FEATURED WORK
+========================= */
+
+.featured{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.feature-card{
+  background:#101010;
+  border:1px solid var(--line);
+  overflow:hidden;
+  border-radius:22px;
+  transition:.4s;
+}
+
+.feature-card:hover{
+  transform:translateY(-5px);
+  border-color:#444;
+}
+
+.feature-image{
+  aspect-ratio:4/5;
+  overflow:hidden;
+  background:#151515;
+}
+
+.feature-image img{
+  height:100%;
+  object-fit:cover;
+  transition:transform .6s;
+}
+
+.feature-card:hover .feature-image img{
+  transform:scale(1.05);
+}
+
+.feature-info{
+  padding:20px;
+}
+
+.feature-info small{
+  color:#777;
+  font-size:9px;
+  letter-spacing:.2em;
+}
+
+.feature-info h3{
+  margin-top:9px;
+  font-size:22px;
+  letter-spacing:-.04em;
+}
+
+
+/* =========================
+   IMAGE + TEXT
+========================= */
+
+.story{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  min-height:620px;
+}
+
+.story-image{
+  overflow:hidden;
+  background:#111;
+}
+
+.story-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.story-text{
+  background:#ededE8;
+  color:#080808;
+  padding:70px;
+  display:flex;
+  justify-content:center;
+  flex-direction:column;
+}
+
+.story-text .eyebrow{
+  color:#666;
+}
+
+.story-text h2{
+  margin:20px 0;
+  font-size:clamp(48px,6vw,80px);
+  line-height:.88;
+  letter-spacing:-.07em;
+}
+
+.story-text p{
+  max-width:470px;
+  color:#444;
+  font-size:15px;
+  line-height:1.8;
+}
+
+
+/* =========================
+   GALLERY
+========================= */
+
+.gallery{
+  columns:3 260px;
+  column-gap:16px;
+}
+
+.gallery-item{
+  break-inside:avoid;
+  margin-bottom:16px;
+  border-radius:18px;
+  overflow:hidden;
+  background:#111;
+  border:1px solid var(--line);
+  cursor:pointer;
+}
+
+.gallery-item img{
+  height:auto;
+  transition:transform .45s;
+}
+
+.gallery-item:hover img{
+  transform:scale(1.035);
+}
+
+
+/* =========================
+   ABOUT
+========================= */
+
+.about-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+}
+
+.about-card{
+  padding:34px;
+  background:var(--soft);
+  border:1px solid var(--line);
+  border-radius:24px;
+}
+
+.about-card .big{
+  color:#eee;
+  font-size:25px;
+  line-height:1.35;
+}
+
+.about-card p{
+  color:#999;
+  line-height:1.8;
+  margin-top:20px;
+}
+
+.skills{
+  display:flex;
+  gap:9px;
+  flex-wrap:wrap;
+  margin-top:25px;
+}
+
+.skill{
+  padding:9px 12px;
+  border:1px solid #2b2b2b;
+  border-radius:999px;
+  color:#ccc;
+  font-size:11px;
+}
+
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact-section{
+  padding-bottom:60px;
+}
+
+.contact-box{
+  background:#f1f1ed;
+  color:#080808;
+  border-radius:30px;
+  padding:85px 30px;
+  text-align:center;
+}
+
+.contact-box .eyebrow{
+  color:#666;
+}
+
+.contact-box h2{
+  margin-top:18px;
+  font-size:clamp(50px,8vw,100px);
+  line-height:.82;
+  letter-spacing:-.075em;
+}
+
+.contact-box p{
+  max-width:570px;
+  margin:25px auto 0;
+  color:#444;
+  font-size:15px;
+  line-height:1.7;
+}
+
+.contact-links{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:35px;
+}
+
+.contact-btn{
+  min-height:48px;
+  padding:0 23px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid #111;
+  border-radius:999px;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  transition:.3s;
+}
+
+.contact-btn:hover{
+  background:#080808;
+  color:#fff;
+}
+
+
+/* =========================
+   LIGHTBOX
+========================= */
+
+.lightbox{
+  position:fixed;
+  inset:0;
+  z-index:500;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  background:rgba(0,0,0,.96);
+  padding:25px;
+}
+
+.lightbox.active{
+  display:flex;
+}
+
+.lightbox img{
+  max-width:94vw;
+  max-height:90vh;
+  width:auto;
+  height:auto;
+  object-fit:contain;
+}
+
+.close{
+  position:absolute;
+  top:20px;
+  right:25px;
+  border:0;
+  background:none;
+  color:#fff;
+  font-size:38px;
+  cursor:pointer;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+  padding:35px 0 55px;
+  display:flex;
+  justify-content:space-between;
+  color:#666;
+  font-size:9px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:800px){
+
+  .links{
+    display:none;
+  }
+
+  .menu{
+    display:block;
+  }
+
+  .mobile-menu{
+    position:absolute;
+    top:74px;
+    left:0;
+    width:100%;
+    padding:25px 5%;
+    background:#080808;
+    border-bottom:1px solid #222;
+  }
+
+  .mobile-menu.active{
+    display:grid;
+    gap:20px;
+  }
+
+  .mobile-menu a{
+    color:#aaa;
+    font-size:12px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+  }
+
+  .hero{
+    min-height:100svh;
+    padding:110px 0 55px;
+  }
+
+  .hero h1{
+    font-size:17vw;
+  }
+
+  .hero h1 span:nth-child(2),
+  .hero h1 span:nth-child(3){
+    padding-left:0;
+  }
+
+  .hero-description{
+    font-size:14px;
+  }
+
+  section{
+    padding:85px 0;
+  }
+
+  .section-head{
+    display:block;
+  }
+
+  .section-head p{
+    margin-top:18px;
+  }
+
+  .featured{
+    grid-template-columns:1fr;
+  }
+
+  .story{
+    grid-template-columns:1fr;
+  }
+
+  .story-image{
+    height:520px;
+  }
+
+  .story-text{
+    padding:55px 30px;
+  }
+
+  .about-grid{
+    grid-template-columns:1fr;
+  }
+
+  .contact-box{
+    padding:65px 20px;
+  }
+
+  footer{
+    display:block;
+  }
+
+  footer div{
+    margin-top:12px;
+  }
+}
 </style>
 </head>
+
+
 <body>
-<nav><div class="wrap nav"><a class="logo" href="#home">LEO</a><div class="links"><a href="#about">About</a><a href="#work">Work</a><a href="#contact">Contact</a></div></div></nav>
+
+
+<!-- =========================
+     NAV
+========================= -->
+
+<nav>
+
+  <div class="wrap nav">
+
+    <a class="logo" href="#home">
+      LEO
+    </a>
+
+    <div class="links">
+
+      <a href="#work">Work</a>
+
+      <a href="#about">About</a>
+
+      <a href="#contact">Contact</a>
+
+    </div>
+
+    <button
+      class="menu"
+      id="menuBtn"
+      aria-label="Menu">
+
+      ☰
+
+    </button>
+
+  </div>
+
+
+  <div
+    class="mobile-menu"
+    id="mobileMenu">
+
+    <a href="#work">Work</a>
+
+    <a href="#about">About</a>
+
+    <a href="#contact">Contact</a>
+
+  </div>
+
+</nav>
+
+
+
+<!-- =========================
+     MAIN
+========================= -->
 
 <main id="home">
-<section class="hero"><div class="wrap heroGrid">
-<div>
-<div class="eyebrow">Personal Portfolio / Visual Creative</div>
-<h1>CREATE.<br>CAPTURE.<br>EXPRESS.</h1>
-<p>I'm Leo — a visual creator building my style through photography, creative edits, content and digital storytelling.</p>
-<div class="btns"><a class="btn primary" href="#work">Explore My Work</a><a class="btn" href="#contact">Let's Connect</a></div>
-</div>
-<div class="heroImg"><img src="images/work-2.jpg" alt="Leo portfolio portrait"></div>
-</div></section>
 
-<section id="about"><div class="wrap">
-<div class="head"><h2>About Me</h2><p>A simple introduction to the person behind the camera, edits and ideas.</p></div>
-<div class="about">
-<div class="card"><p>Hi, I'm Leo. I'm exploring content creation, photography, visual editing and digital creativity. I enjoy turning everyday moments into visuals with a cinematic and personal feel.</p><p>This portfolio is my creative space — a place to showcase what I've made and what I'm building next.</p></div>
-<div class="card"><strong>What I Create</strong><div class="skills">
-<span class="skill">Photography</span><span class="skill">Portraits</span><span class="skill">Photo Editing</span><span class="skill">Content Creation</span><span class="skill">Visual Storytelling</span><span class="skill">AI Creative Work</span><span class="skill">Social Media</span>
-</div></div>
-</div></div></section>
 
-<section id="work"><div class="wrap">
-<div class="head"><h2>Selected Work</h2><p>A visual gallery of my favourite shots, edits and creative experiments.</p></div>
-<div class="gallery">
-<div class="item"><img src="images/work-1.jpg" alt="Creative portrait"></div>
-<div class="item"><img src="images/work-2.jpg" alt="Motorcycle portrait"></div>
-<div class="item"><img src="images/work-3.jpg" alt="Black and white portrait"></div>
-<div class="item"><img src="images/work-4.png" alt="Night street photography"></div>
-<div class="item"><img src="images/work-5.jpg" alt="Beach portrait"></div>
-<div class="item"><img src="images/work-6.png" alt="Studio football portrait"></div>
-<div class="item"><img src="images/work-7.png" alt="Black and white fashion portrait"></div>
-<div class="item"><img src="images/work-8.png" alt="Football field portrait"></div>
-<div class="item"><img src="images/work-9.jpg" alt="Creative silhouette"></div>
-<div class="item"><img src="images/work-10.jpg" alt="Motorcycle and temple portrait"></div>
-</div></div></section>
+<!-- =========================
+     HERO
+========================= -->
 
-<section id="contact"><div class="wrap"><div class="contact">
-<h2>LET'S CREATE<br>SOMETHING GREAT.</h2>
-<p>For collaborations, creative projects or just to connect, reach out through the links below.</p>
-<div class="btns" style="justify-content:center">
-<a class="btn primary" href="#" onclick="alert('Add your Instagram URL here');return false">Instagram</a>
-<a class="btn" href="mailto:your@email.com">Email</a>
-</div>
-</div></div></section>
+<section class="hero">
+
+
+  <!-- FULL SCREEN IMAGE -->
+
+  <div class="hero-image">
+
+    <img
+      src="images/work-2.jpg"
+      alt="Leo Visual Creator">
+
+    <div class="hero-overlay"></div>
+
+  </div>
+
+
+  <div class="wrap hero-content">
+
+
+    <div class="eyebrow">
+      Visual Creator / Photography / Fashion
+    </div>
+
+
+    <h1>
+
+      <span>CREATE.</span>
+
+      <span>CAPTURE.</span>
+
+      <span>EXPRESS.</span>
+
+    </h1>
+
+
+    <p class="hero-description">
+
+      I'm Leo — a visual creator building my style
+      through photography, fashion, creative edits
+      and digital storytelling.
+
+    </p>
+
+
+    <div class="hero-buttons">
+
+      <a
+        class="btn white"
+        href="#work">
+
+        Explore My Work ↓
+
+      </a>
+
+
+      <a
+        class="btn"
+        href="#contact">
+
+        Contact Me ↗
+
+      </a>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================
+     WORK
+========================= -->
+
+<section id="work">
+
+
+  <div class="wrap">
+
+
+    <div class="section-head">
+
+
+      <div>
+
+        <div class="section-number">
+          01 / Selected Work
+        </div>
+
+        <h2>
+          My<br>
+          <em>Work.</em>
+        </h2>
+
+      </div>
+
+
+      <p>
+
+        Photography, fashion and creative
+        visuals — selected from my growing
+        visual archive.
+
+      </p>
+
+
+    </div>
+
+
+
+    <!-- FEATURED 3 -->
+
+    <div class="featured">
+
+
+      <article class="feature-card">
+
+        <div class="feature-image">
+
+          <img
+            src="images/work-1.png"
+            alt="Photography">
+
+        </div>
+
+        <div class="feature-info">
+
+          <small>
+            01 / PHOTOGRAPHY
+          </small>
+
+          <h3>
+            Portraits
+          </h3>
+
+        </div>
+
+      </article>
+
+
+
+      <article class="feature-card">
+
+        <div class="feature-image">
+
+          <img
+            src="images/work-5.jpg"
+            alt="Fashion">
+
+        </div>
+
+        <div class="feature-info">
+
+          <small>
+            02 / FASHION
+          </small>
+
+          <h3>
+            Style & Identity
+          </h3>
+
+        </div>
+
+      </article>
+
+
+
+      <article class="feature-card">
+
+        <div class="feature-image">
+
+          <img
+            src="images/work-9.jpg"
+            alt="Creative">
+
+        </div>
+
+        <div class="feature-info">
+
+          <small>
+            03 / CREATIVE
+          </small>
+
+          <h3>
+            Visual Experiments
+          </h3>
+
+        </div>
+
+      </article>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================
+     STORY MODULE
+========================= -->
+
+<section>
+
+
+  <div class="wrap">
+
+
+    <div class="story">
+
+
+      <div class="story-image">
+
+        <img
+          src="images/work-10.jpg"
+          alt="Leo visual story">
+
+      </div>
+
+
+      <div class="story-text">
+
+        <div class="eyebrow">
+          Featured / Visual Story
+        </div>
+
+
+        <h2>
+          Made to<br>
+          <em>be seen.</em>
+        </h2>
+
+
+        <p>
+
+          I like visuals that feel simple
+          at first glance, but stay in your mind.
+          Photography, fashion and creative
+          edits are the tools I use to build
+          that feeling.
+
+        </p>
+
+
+        <div class="hero-buttons">
+
+          <a
+            class="btn"
+            style="color:#080808;border-color:#080808"
+            href="#contact">
+
+            Work With Me ↗
+
+          </a>
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================
+     GALLERY
+========================= -->
+
+<section>
+
+
+  <div class="wrap">
+
+
+    <div class="section-head">
+
+
+      <div>
+
+        <div class="section-number">
+          02 / Archive
+        </div>
+
+        <h2>
+          The<br>
+          <em>Gallery.</em>
+        </h2>
+
+      </div>
+
+
+      <p>
+
+        A collection of selected frames,
+        portraits, fashion visuals and
+        creative experiments.
+
+      </p>
+
+
+    </div>
+
+
+
+    <div class="gallery">
+
+
+      <div class="gallery-item">
+
+        <img
+          src="images/work-1.png"
+          alt="Leo work 1"
+          data-image>
+
+      </div>
+
+
+      <div class="gallery-item">
+
+        <img
+          src="images/work-2.jpg"
+          alt="Leo work 2"
+          data-image>
+
+      </div>
+
+
+      <div class="gallery-item">
+
+        <img
+          src="images/work-3.jpg"
+          alt="Leo work 3"
+          data-image>
+
+      </div>
+
+
+      <div class="gallery-item">
+
+        <img
+          src="images/work-4.png"
+          alt="Leo work 4"
+          data-image>
+
+      </div>
+
+
+      <div class="gallery-item">
+
+        <img
+          src="images/work-5.jpg"
+          alt="Leo work 5"
+          data-image>
+
+      </div>
+
+
+      <div class="gallery-item">
+
+        <img
+          src="images/work-6.png"
+          alt="Leo work 6"
+          data-image>
+
+      </div>
+
+
+      <div class="gallery-item">
+
+        <img
+          src="images/work-7.png"
+          alt="Leo work 7"
+          data-image>
+
+      </div>
+
+
+      <div class="gallery-item">
+
+        <img
+          src="images/work-8.png"
+          alt="Leo work 8"
+          data-image>
+
+      </div>
+
+
+      <div class="gallery-item">
+
+        <img
+          src="images/work-9.jpg"
+          alt="Leo work 9"
+          data-image>
+
+      </div>
+
+
+      <div class="gallery-item">
+
+        <img
+          src="images/work-10.jpg"
+          alt="Leo work 10"
+          data-image>
+
+      </div>
+
+
+      <div class="gallery-item">
+
+        <img
+          src="images/work-11.png"
+          alt="Leo work 11"
+          data-image>
+
+      </div>
+
+
+      <div class="gallery-item">
+
+        <img
+          src="images/work-12.png"
+          alt="Leo work 12"
+          data-image>
+
+      </div>
+
+
+      <div class="gallery-item">
+
+        <img
+          src="images/work-13.png"
+          alt="Leo work 13"
+          data-image>
+
+      </div>
+
+
+      <div class="gallery-item">
+
+        <img
+          src="images/work-14.png"
+          alt="Leo work 14"
+          data-image>
+
+      </div>
+
+
+      <div class="gallery-item">
+
+        <img
+          src="images/work-15.png"
+          alt="Leo work 15"
+          data-image>
+
+      </div>
+
+
+      <div class="gallery-item">
+
+        <img
+          src="images/work-16.png"
+          alt="Leo work 16"
+          data-image>
+
+      </div>
+
+
+      <div class="gallery-item">
+
+        <img
+          src="images/work-17.jpg"
+          alt="Leo work 17"
+          data-image>
+
+      </div>
+
+
+      <div class="gallery-item">
+
+        <img
+          src="images/work-18.png"
+          alt="Leo work 18"
+          data-image>
+
+      </div>
+
+
+      <div class="gallery-item">
+
+        <img
+          src="images/work-19.png"
+          alt="Leo work 19"
+          data-image>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================
+     ABOUT
+========================= -->
+
+<section id="about">
+
+
+  <div class="wrap">
+
+
+    <div class="section-head">
+
+
+      <div>
+
+        <div class="section-number">
+          03 / About
+        </div>
+
+        <h2>
+          About<br>
+          <em>Leo.</em>
+        </h2>
+
+      </div>
+
+
+      <p>
+
+        The person behind the camera,
+        edits, ideas and creative work.
+
+      </p>
+
+
+    </div>
+
+
+
+    <div class="about-grid">
+
+
+      <div class="about-card">
+
+        <p class="big">
+
+          Visuals are how I turn ideas,
+          people and moments into something
+          memorable.
+
+        </p>
+
+
+        <p>
+
+          I'm Leo — exploring photography,
+          fashion, visual editing, content
+          creation and digital creativity.
+
+          This portfolio is my creative space
+          to showcase what I make and what
+          I'm building next.
+
+        </p>
+
+      </div>
+
+
+
+      <div class="about-card">
+
+        <strong>
+          What I Create
+        </strong>
+
+
+        <div class="skills">
+
+          <span class="skill">
+            Photography
+          </span>
+
+          <span class="skill">
+            Portraits
+          </span>
+
+          <span class="skill">
+            Fashion
+          </span>
+
+          <span class="skill">
+            Photo Editing
+          </span>
+
+          <span class="skill">
+            Content Creation
+          </span>
+
+          <span class="skill">
+            Visual Storytelling
+          </span>
+
+          <span class="skill">
+            AI Creative Work
+          </span>
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================
+     CONTACT
+========================= -->
+
+<section
+  id="contact"
+  class="contact-section">
+
+
+  <div class="wrap">
+
+
+    <div class="contact-box">
+
+
+      <div class="eyebrow">
+        Available for Creative Work
+      </div>
+
+
+      <h2>
+
+        LET'S CREATE<br>
+
+        <em>SOMETHING.</em>
+
+      </h2>
+
+
+      <p>
+
+        For collaborations, photography,
+        creative projects or just to connect,
+        reach out through Instagram,
+        WhatsApp or email.
+
+      </p>
+
+
+      <div class="contact-links">
+
+
+        <!-- INSTAGRAM -->
+
+        <a
+          class="contact-btn"
+          href="https://instagram.com/YOUR_USERNAME"
+          target="_blank"
+          rel="noopener">
+
+          Instagram ↗
+
+        </a>
+
+
+        <!-- WHATSAPP -->
+
+        <a
+          class="contact-btn"
+          href="https://wa.me/91YOURNUMBER"
+          target="_blank"
+          rel="noopener">
+
+          WhatsApp ↗
+
+        </a>
+
+
+        <!-- EMAIL -->
+
+        <a
+          class="contact-btn"
+          href="mailto:YOUR_EMAIL@example.com">
+
+          Email ↗
+
+        </a>
+
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
 </main>
-<footer class="wrap"><strong style="color:#ddd">LEO</strong><div>© 2026 Leo · Visual Creator Portfolio</div></footer>
-</body></html>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer class="wrap">
+
+  <strong style="color:#ddd">
+    LEO
+  </strong>
+
+
+  <div>
+
+    © <span id="year"></span>
+    Leo · Visual Creator
+
+  </div>
+
+</footer>
+
+
+
+<!-- =========================
+     LIGHTBOX
+========================= -->
+
+<div
+  class="lightbox"
+  id="lightbox">
+
+
+  <button
+    class="close"
+    id="close">
+
+    ×
+
+  </button>
+
+
+  <img
+    id="lightboxImage"
+    src=""
+    alt="">
+
+</div>
+
+
+
+<script>
+
+/* YEAR */
+
+document.getElementById("year").textContent =
+new Date().getFullYear();
+
+
+
+/* MOBILE MENU */
+
+const menuBtn =
+document.getElementById("menuBtn");
+
+const mobileMenu =
+document.getElementById("mobileMenu");
+
+
+menuBtn.addEventListener(
+  "click",
+  function(){
+
+    mobileMenu.classList.toggle("active");
+
+  }
+);
+
+
+mobileMenu
+.querySelectorAll("a")
+.forEach(function(link){
+
+  link.addEventListener(
+    "click",
+    function(){
+
+      mobileMenu.classList.remove("active");
+
+    }
+  );
+
+});
+
+
+
+/* LIGHTBOX */
+
+const lightbox =
+document.getElementById("lightbox");
+
+const lightboxImage =
+document.getElementById("lightboxImage");
+
+const closeButton =
+document.getElementById("close");
+
+
+document
+.querySelectorAll("[data-image]")
+.forEach(function(image){
+
+  image.addEventListener(
+    "click",
+    function(){
+
+      lightboxImage.src =
+      image.src;
+
+      lightboxImage.alt =
+      image.alt;
+
+      lightbox.classList.add("active");
+
+      document.body.classList.add("lock");
+
+    }
+  );
+
+});
+
+
+function closeLightbox(){
+
+  lightbox.classList.remove("active");
+
+  document.body.classList.remove("lock");
+
+  lightboxImage.src="";
+
+}
+
+
+closeButton.addEventListener(
+  "click",
+  closeLightbox
+);
+
+
+lightbox.addEventListener(
+  "click",
+  function(event){
+
+    if(event.target === lightbox){
+
+      closeLightbox();
+
+    }
+
+  }
+);
+
+
+document.addEventListener(
+  "keydown",
+  function(event){
+
+    if(event.key === "Escape"){
+
+      closeLightbox();
+
+    }
+
+  }
+);
+
+</script>
+
+</body>
+</html>
