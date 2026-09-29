@@ -2,354 +2,2626 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Leo — Visual Creator & Digital Creative Portfolio">
-<title>LEO — Visual Creator</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="Murugadoss — Visual Creator, Photographer & Creative Artist">
+
+<title>MURUGADOSS — Visual Creator</title>
 
 <style>
+
+/* ================================
+   ROOT
+================================ */
+
 :root{
-  --bg:#070707;
-  --text:#f5f5f2;
-  --muted:#999;
-  --line:#242424;
-  --soft:#111;
-  --white:#fff;
+    --bg:#0a0a0a;
+    --text:#f5f5f5;
+    --muted:#8e8e8e;
+    --line:#252525;
+    --card:#111111;
+    --accent:#ffffff;
 }
 
 *{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
 html{
-  scroll-behavior:smooth;
+    scroll-behavior:smooth;
 }
 
 body{
-  background:var(--bg);
-  color:var(--text);
-  font-family:Inter,Arial,Helvetica,sans-serif;
-  overflow-x:hidden;
+    background:var(--bg);
+    color:var(--text);
+    font-family:Arial, Helvetica, sans-serif;
+    overflow-x:hidden;
 }
 
-body.lock{
-  overflow:hidden;
+body.light{
+    --bg:#f4f4f2;
+    --text:#0a0a0a;
+    --muted:#666;
+    --line:#d8d8d8;
+    --card:#ffffff;
+    --accent:#000000;
 }
 
 a{
-  color:inherit;
-  text-decoration:none;
-}
-
-img{
-  display:block;
-  width:100%;
+    color:inherit;
+    text-decoration:none;
 }
 
 button{
-  font:inherit;
+    font:inherit;
 }
 
-.wrap{
-  width:min(1180px,90%);
-  margin:auto;
+img{
+    max-width:100%;
 }
 
 
-/* =========================
+/* ================================
+   GLOBAL
+================================ */
+
+.container{
+    width:min(1400px,92%);
+    margin:auto;
+}
+
+section{
+    position:relative;
+}
+
+.label{
+    font-size:11px;
+    letter-spacing:.25em;
+    text-transform:uppercase;
+    color:var(--muted);
+}
+
+
+/* ================================
    NAVIGATION
-========================= */
-
-nav{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  z-index:100;
-  background:rgba(7,7,7,.45);
-  backdrop-filter:blur(18px);
-  border-bottom:1px solid rgba(255,255,255,.08);
-}
+================================ */
 
 .nav{
-  height:74px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:1000;
+
+    padding:22px 4%;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    mix-blend-mode:difference;
+    color:white;
 }
 
 .logo{
-  font-size:19px;
-  font-weight:900;
-  letter-spacing:.22em;
+    font-size:16px;
+    font-weight:900;
+    letter-spacing:.18em;
 }
 
-.links{
-  display:flex;
-  gap:30px;
+.nav-links{
+    display:flex;
+    gap:32px;
+    align-items:center;
+
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:.15em;
+    text-transform:uppercase;
 }
 
-.links a{
-  color:#aaa;
-  font-size:10px;
-  letter-spacing:.2em;
-  text-transform:uppercase;
-  transition:.3s;
+.nav-links a{
+    transition:opacity .3s ease;
 }
 
-.links a:hover{
-  color:#fff;
+.nav-links a:hover{
+    opacity:.5;
 }
 
-.menu{
-  display:none;
-  border:0;
-  background:none;
-  color:#fff;
-  font-size:25px;
-  cursor:pointer;
+.nav-actions{
+    display:flex;
+    align-items:center;
+    gap:15px;
 }
 
-.mobile-menu{
-  display:none;
+.theme-btn{
+    width:34px;
+    height:34px;
+
+    border:1px solid rgba(255,255,255,.5);
+    border-radius:50%;
+
+    background:transparent;
+    color:white;
+
+    cursor:pointer;
+
+    font-size:13px;
+
+    transition:.3s ease;
+}
+
+.theme-btn:hover{
+    background:white;
+    color:black;
 }
 
 
-/* =========================
+/* ================================
    HERO
-========================= */
+================================ */
 
 .hero{
-  min-height:100svh;
-  position:relative;
-  overflow:hidden;
-  display:flex;
-  align-items:flex-end;
-  padding:120px 0 70px;
+    min-height:100vh;
+    height:100vh;
+
+    position:relative;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    overflow:hidden;
 }
 
 .hero-image{
-  position:absolute;
-  inset:0;
-  z-index:0;
+    position:absolute;
+    inset:0;
+
+    z-index:1;
+}
+
+.hero-image::after{
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0,0,0,.15),
+            rgba(0,0,0,.2) 50%,
+            rgba(0,0,0,.65)
+        );
+
+    z-index:2;
 }
 
 .hero-image img{
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+    object-position:center;
+
+    display:block;
+
+    filter:contrast(1.05);
+}
+
+.hero-content{
+    position:relative;
+
+    z-index:5;
+
+    width:100%;
+    height:100%;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+
+    padding:8vw 4%;
+}
+
+
+/* huge name */
+
+.hero-name{
+    position:relative;
+    z-index:6;
+
+    width:100%;
+
+    font-size:clamp(70px,15vw,230px);
+    line-height:.78;
+
+    font-weight:900;
+
+    letter-spacing:-.075em;
+
+    text-align:center;
+
+    color:white;
+
+    mix-blend-mode:screen;
+
+    user-select:none;
+}
+
+.hero-name span{
+    display:block;
+}
+
+
+/* hero small information */
+
+.hero-info{
+    position:absolute;
+
+    left:4%;
+    bottom:5%;
+
+    z-index:10;
+
+    max-width:280px;
+
+    color:white;
+}
+
+.hero-info p{
+    margin-top:12px;
+
+    font-size:14px;
+    line-height:1.6;
+
+    color:rgba(255,255,255,.75);
+}
+
+
+/* hero CTA */
+
+.hero-cta{
+    position:absolute;
+
+    right:4%;
+    bottom:5%;
+
+    z-index:10;
+}
+
+.circle-button{
+    width:125px;
+    height:125px;
+
+    border:1px solid rgba(255,255,255,.7);
+
+    border-radius:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:white;
+
+    font-size:11px;
+    font-weight:700;
+
+    letter-spacing:.12em;
+
+    text-transform:uppercase;
+
+    transition:
+        background .4s ease,
+        color .4s ease,
+        transform .4s ease;
+}
+
+.circle-button:hover{
+    background:white;
+    color:black;
+
+    transform:rotate(-8deg) scale(1.06);
+}
+
+
+/* ================================
+   INTRO STRIP
+================================ */
+
+.intro{
+    padding:130px 0;
+
+    border-top:1px solid var(--line);
+}
+
+.intro-grid{
+    display:grid;
+
+    grid-template-columns:1fr 2fr;
+
+    gap:60px;
+}
+
+.intro-title{
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:.2em;
+}
+
+.intro-text{
+    font-size:clamp(30px,4vw,62px);
+
+    line-height:1.05;
+
+    letter-spacing:-.045em;
+
+    max-width:1000px;
+}
+
+.intro-text strong{
+    font-weight:800;
+}
+
+
+/* ================================
+   WHAT I CREATE
+================================ */
+
+.create{
+    padding:100px 0 150px;
+
+    border-top:1px solid var(--line);
+}
+
+.section-top{
+    display:flex;
+
+    align-items:flex-end;
+    justify-content:space-between;
+
+    gap:30px;
+
+    margin-bottom:70px;
+}
+
+.section-title{
+    font-size:clamp(55px,9vw,130px);
+
+    line-height:.82;
+
+    letter-spacing:-.07em;
+
+    font-weight:900;
+}
+
+.section-description{
+    max-width:330px;
+
+    color:var(--muted);
+
+    line-height:1.6;
+
+    font-size:14px;
+}
+
+.create-grid{
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:1px;
+
+    background:var(--line);
+
+    border:1px solid var(--line);
+}
+
+.create-card{
+    min-height:400px;
+
+    background:var(--bg);
+
+    padding:35px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:space-between;
+
+    transition:
+        background .4s ease,
+        color .4s ease;
+}
+
+.create-card:hover{
+    background:var(--text);
+    color:var(--bg);
+}
+
+.create-number{
+    font-size:12px;
+    color:var(--muted);
+}
+
+.create-card h3{
+    font-size:clamp(35px,5vw,70px);
+
+    letter-spacing:-.055em;
+
+    line-height:.9;
+}
+
+.create-card p{
+    max-width:350px;
+
+    color:var(--muted);
+
+    line-height:1.6;
+
+    font-size:14px;
+}
+
+
+/* ================================
+   AVAILABLE STATUS
+================================ */
+
+.booking-status{
+    padding:30px 0;
+
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+}
+
+.status-inner{
+    display:flex;
+
+    justify-content:space-between;
+    align-items:center;
+
+    gap:20px;
+}
+
+.status{
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    font-size:11px;
+
+    text-transform:uppercase;
+
+    letter-spacing:.18em;
+}
+
+.status-dot{
+    width:8px;
+    height:8px;
+
+    border-radius:50%;
+
+    background:#72ff72;
+
+    box-shadow:0 0 12px rgba(114,255,114,.8);
+}
+
+
+/* ================================
+   CUSTOM CURSOR
+================================ */
+
+.cursor{
+    position:fixed;
+
+    width:18px;
+    height:18px;
+
+    border:1px solid white;
+
+    border-radius:50%;
+
+    pointer-events:none;
+
+    z-index:9999;
+
+    transform:translate(-50%,-50%);
+
+    mix-blend-mode:difference;
+
+    transition:
+        width .2s ease,
+        height .2s ease;
+}
+
+.cursor.big{
+    width:55px;
+    height:55px;
+}
+
+
+/* ================================
+   FOOTER PLACEHOLDER
+================================ */
+
+.footer-start{
+    padding:120px 0 50px;
+
+    border-top:1px solid var(--line);
+}
+
+.footer-name{
+    font-size:clamp(80px,17vw,250px);
+
+    font-weight:900;
+
+    letter-spacing:-.08em;
+
+    line-height:.75;
+
+    text-align:center;
+}
+
+
+/* ================================
+   MOBILE
+================================ */
+
+@media(max-width:800px){
+
+    .nav{
+        padding:18px 5%;
+    }
+
+    .nav-links{
+        display:none;
+    }
+
+    .hero{
+        min-height:90vh;
+        height:90vh;
+    }
+
+    .hero-content{
+        padding:20px 5%;
+    }
+
+    .hero-name{
+        font-size:19vw;
+        line-height:.82;
+    }
+
+    .hero-info{
+        left:5%;
+        bottom:4%;
+        max-width:230px;
+    }
+
+    .hero-info p{
+        font-size:12px;
+    }
+
+    .hero-cta{
+        right:5%;
+        bottom:4%;
+    }
+
+    .circle-button{
+        width:90px;
+        height:90px;
+        font-size:9px;
+    }
+
+    .intro{
+        padding:90px 0;
+    }
+
+    .intro-grid{
+        grid-template-columns:1fr;
+        gap:30px;
+    }
+
+    .intro-text{
+        font-size:34px;
+    }
+
+    .section-top{
+        display:block;
+        margin-bottom:45px;
+    }
+
+    .section-description{
+        margin-top:25px;
+    }
+
+    .create{
+        padding:90px 0;
+    }
+
+    .create-grid{
+        grid-template-columns:1fr;
+    }
+
+    .create-card{
+        min-height:300px;
+    }
+
+    .status-inner{
+        display:block;
+    }
+
+    .status-inner .label{
+        margin-top:15px;
+    }
+
+    .cursor{
+        display:none;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+<!-- ================================
+     NAVIGATION
+================================ -->
+
+<header class="nav">
+
+    <a href="#home" class="logo">
+        MURUGADOSS
+    </a>
+
+    <nav class="nav-links">
+
+        <a href="#work">Work</a>
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+
+    </nav>
+
+    <div class="nav-actions">
+
+        <button
+            class="theme-btn"
+            id="themeToggle"
+            aria-label="Toggle theme">
+            ☾
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- ================================
+     HERO
+================================ -->
+
+<main id="home">
+
+<section class="hero">
+
+    <div class="hero-image">
+
+        <!-- IMPORTANT:
+             Replace .jpg with .png if your work-2 file is PNG
+        -->
+
+        <img
+            src="images/work-2.jpg"
+            alt="Murugadoss visual work"
+        >
+
+    </div>
+
+
+    <div class="hero-content">
+
+        <div class="hero-name">
+
+            <span>MURU</span>
+            <span>GADOSS</span>
+
+        </div>
+
+
+        <div class="hero-info">
+
+            <div class="label">
+                Visual Creator
+            </div>
+
+            <p>
+                Photography, visual editing,
+                creative content and digital
+                visual experiences.
+            </p>
+
+        </div>
+
+
+        <div class="hero-cta">
+
+            <a
+                href="#services"
+                class="circle-button cursor-hover">
+
+                Explore
+                <br>
+                Work →
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================================
+     INTRO
+================================ -->
+
+<section class="intro">
+
+    <div class="container intro-grid">
+
+        <div class="intro-title">
+            About The Work
+        </div>
+
+        <div class="intro-text">
+
+            I create <strong>visual experiences</strong>
+            through photography, editing and
+            creative ideas — turning ordinary
+            moments into something worth seeing.
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================================
+     WHAT I CREATE
+================================ -->
+
+<section
+    class="create"
+    id="services">
+
+    <div class="container">
+
+        <div class="section-top">
+
+            <h2 class="section-title">
+                WHAT<br>
+                I CREATE
+            </h2>
+
+            <p class="section-description">
+
+                A mix of photography,
+                visual editing and creative
+                digital work.
+
+            </p>
+
+        </div>
+
+
+        <div class="create-grid">
+
+
+            <article class="create-card cursor-hover">
+
+                <div class="create-number">
+                    01 / PHOTOGRAPHY
+                </div>
+
+                <h3>
+                    CAPTURE
+                </h3>
+
+                <p>
+                    Portraits, fashion,
+                    lifestyle and creative
+                    photography.
+                </p>
+
+            </article>
+
+
+            <article class="create-card cursor-hover">
+
+                <div class="create-number">
+                    02 / EDITING
+                </div>
+
+                <h3>
+                    TRANSFORM
+                </h3>
+
+                <p>
+                    Retouching, colour grading
+                    and creative photo editing.
+                </p>
+
+            </article>
+
+
+            <article class="create-card cursor-hover">
+
+                <div class="create-number">
+                    03 / CONTENT
+                </div>
+
+                <h3>
+                    EXPRESS
+                </h3>
+
+                <p>
+                    Social media visuals,
+                    creative concepts and
+                    digital content.
+                </p>
+
+            </article>
+
+
+            <article class="create-card cursor-hover">
+
+                <div class="create-number">
+                    04 / AI VISUALS
+                </div>
+
+                <h3>
+                    IMAGINE
+                </h3>
+
+                <p>
+                    Experimental AI visuals
+                    and new forms of digital
+                    creativity.
+                </p>
+
+            </article>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================================
+     BOOKING STATUS
+================================ -->
+
+<section class="booking-status">
+
+    <div class="container status-inner">
+
+        <div class="status">
+
+            <span class="status-dot"></span>
+
+            Available for bookings
+
+        </div>
+
+        <div class="label">
+
+            Photography · Creative Projects · Collaborations
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================================
+     TEMPORARY WORK ANCHOR
+     PART 2 WILL REPLACE THIS
+================================ -->
+
+<section
+    id="work"
+    style="
+        min-height:20vh;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        text-align:center;
+    ">
+
+    <div>
+
+        <div class="label">
+            Part 2 Coming Next
+        </div>
+
+        <h2
+            style="
+                margin-top:15px;
+                font-size:clamp(40px,7vw,90px);
+                letter-spacing:-.06em;
+            ">
+
+            SELECTED WORK
+
+        </h2>
+
+    </div>
+
+</section>
+
+
+<!-- ================================
+     FOOTER START
+================================ -->
+
+<footer class="footer-start" id="contact">
+
+    <div class="container">
+
+        <div class="label" style="text-align:center;">
+            MURUGADOSS · LEO VISUALS
+        </div>
+
+        <div class="footer-name">
+            LEO
+        </div>
+
+    </div>
+
+</footer>
+
+
+</main>
+
+
+<!-- ================================
+     CUSTOM CURSOR
+================================ -->
+
+<div class="cursor" id="cursor"></div>
+
+
+<script>
+
+/* ================================
+   CUSTOM CURSOR
+================================ */
+
+const cursor = document.getElementById("cursor");
+
+if(window.innerWidth > 800){
+
+    document.addEventListener("mousemove", (event)=>{
+
+        cursor.style.left = event.clientX + "px";
+        cursor.style.top = event.clientY + "px";
+
+    });
+
+
+    document.querySelectorAll(".cursor-hover")
+        .forEach(element => {
+
+            element.addEventListener("mouseenter", ()=>{
+
+                cursor.classList.add("big");
+
+            });
+
+            element.addEventListener("mouseleave", ()=>{
+
+                cursor.classList.remove("big");
+
+            });
+
+        });
+
+}
+
+
+/* ================================
+   DARK / LIGHT MODE
+================================ */
+
+const themeToggle =
+    document.getElementById("themeToggle");
+
+
+themeToggle.addEventListener("click", ()=>{
+
+    document.body.classList.toggle("light");
+
+    if(document.body.classList.contains("light")){
+
+        themeToggle.textContent = "☀";
+
+    }else{
+
+        themeToggle.textContent = "☾";
+
+    }
+
+});
+
+
+</script>
+  <!-- =======================================================
+     PART 2 — FEATURED WORK + 45 WORKS + BEFORE / AFTER
+======================================================= -->
+
+
+<!-- =======================================================
+     FEATURED WORK
+======================================================= -->
+
+<section class="featured-work" id="work">
+
+  <div class="container">
+
+    <div class="work-heading">
+
+      <div>
+        <div class="label">
+          01 / Selected
+        </div>
+
+        <h2>
+          FEATURED<br>
+          WORK
+        </h2>
+      </div>
+
+      <p>
+        A selection of visual work from
+        photography, creative edits and
+        personal experiments.
+      </p>
+
+    </div>
+
+
+    <!-- FEATURED 3 -->
+
+    <div class="featured-grid">
+
+
+      <article class="featured-card featured-large cursor-hover">
+
+        <div class="featured-image">
+
+          <img
+            src="images/work-1.jpg"
+            alt="Murugadoss featured photography"
+            loading="lazy"
+          >
+
+          <div class="image-overlay"></div>
+
+        </div>
+
+        <div class="featured-info">
+
+          <span>01 / PORTRAIT</span>
+
+          <strong>VISUAL STORY</strong>
+
+        </div>
+
+      </article>
+
+
+      <article class="featured-card cursor-hover">
+
+        <div class="featured-image">
+
+          <img
+            src="images/work-3.jpg"
+            alt="Murugadoss portrait work"
+            loading="lazy"
+          >
+
+          <div class="image-overlay"></div>
+
+        </div>
+
+        <div class="featured-info">
+
+          <span>02 / PORTRAIT</span>
+
+          <strong>CHARACTER</strong>
+
+        </div>
+
+      </article>
+
+
+      <article class="featured-card cursor-hover">
+
+        <div class="featured-image">
+
+          <img
+            src="images/work-5.jpg"
+            alt="Murugadoss creative photography"
+            loading="lazy"
+          >
+
+          <div class="image-overlay"></div>
+
+        </div>
+
+        <div class="featured-info">
+
+          <span>03 / LIFESTYLE</span>
+
+          <strong>MOMENTS</strong>
+
+        </div>
+
+      </article>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =======================================================
+     FEATURED STORY
+======================================================= -->
+
+<section class="visual-story">
+
+  <div class="container story-grid">
+
+
+    <div class="story-copy">
+
+      <div class="label">
+        02 / Visual Story
+      </div>
+
+      <h2>
+        SEEING<br>
+        THINGS<br>
+        DIFFERENTLY.
+      </h2>
+
+      <p>
+        Photography is not only about
+        capturing a moment. It is about
+        finding a feeling, shaping the
+        atmosphere and creating a visual
+        people remember.
+      </p>
+
+      <a
+        href="#gallery"
+        class="text-link cursor-hover">
+
+        Explore Selected Work
+        <span>↗</span>
+
+      </a>
+
+    </div>
+
+
+    <div class="story-image cursor-hover">
+
+      <img
+        src="images/work-10.jpg"
+        alt="Murugadoss visual story"
+        loading="lazy"
+      >
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+
+<!-- =======================================================
+     FULL WORK GALLERY
+======================================================= -->
+
+<section
+  class="gallery-section"
+  id="gallery">
+
+  <div class="container">
+
+
+    <div class="gallery-header">
+
+      <div>
+
+        <div class="label">
+          03 / Portfolio
+        </div>
+
+        <h2>
+          SELECTED<br>
+          WORKS
+        </h2>
+
+      </div>
+
+
+      <div class="gallery-count">
+
+        <span>45</span>
+        <small>WORKS</small>
+
+      </div>
+
+    </div>
+
+
+    <!-- ===================================================
+         GALLERY GRID
+    =================================================== -->
+
+    <div class="masonry-gallery">
+
+
+      <!-- WORK 01 -->
+
+      <button
+        class="gallery-item tall cursor-hover"
+        data-image="images/work-1.jpg"
+        data-title="Work 01"
+        type="button">
+
+        <img
+          src="images/work-1.jpg"
+          alt="Work 01"
+          loading="lazy"
+        >
+
+        <span>01</span>
+
+      </button>
+
+
+      <!-- WORK 02 -->
+
+      <button
+        class="gallery-item wide cursor-hover"
+        data-image="images/work-2.jpg"
+        data-title="Work 02"
+        type="button">
+
+        <img
+          src="images/work-2.jpg"
+          alt="Work 02"
+          loading="lazy"
+        >
+
+        <span>02</span>
+
+      </button>
+
+
+      <!-- WORK 03 -->
+
+      <button
+        class="gallery-item cursor-hover"
+        data-image="images/work-3.jpg"
+        data-title="Work 03"
+        type="button">
+
+        <img
+          src="images/work-3.jpg"
+          alt="Work 03"
+          loading="lazy"
+        >
+
+        <span>03</span>
+
+      </button>
+
+
+      <!-- WORK 04 -->
+
+      <button
+        class="gallery-item tall cursor-hover"
+        data-image="images/work-4.png"
+        data-title="Work 04"
+        type="button">
+
+        <img
+          src="images/work-4.png"
+          alt="Work 04"
+          loading="lazy"
+        >
+
+        <span>04</span>
+
+      </button>
+
+
+      <!-- WORK 05 -->
+
+      <button
+        class="gallery-item cursor-hover"
+        data-image="images/work-5.jpg"
+        data-title="Work 05"
+        type="button">
+
+        <img
+          src="images/work-5.jpg"
+          alt="Work 05"
+          loading="lazy"
+        >
+
+        <span>05</span>
+
+      </button>
+
+
+      <!-- WORK 06 -->
+
+      <button
+        class="gallery-item wide cursor-hover"
+        data-image="images/work-6.png"
+        data-title="Work 06"
+        type="button">
+
+        <img
+          src="images/work-6.png"
+          alt="Work 06"
+          loading="lazy"
+        >
+
+        <span>06</span>
+
+      </button>
+
+
+      <!-- WORK 07 -->
+
+      <button
+        class="gallery-item cursor-hover"
+        data-image="images/work-7.png"
+        data-title="Work 07"
+        type="button">
+
+        <img
+          src="images/work-7.png"
+          alt="Work 07"
+          loading="lazy"
+        >
+
+        <span>07</span>
+
+      </button>
+
+
+      <!-- WORK 08 -->
+
+      <button
+        class="gallery-item tall cursor-hover"
+        data-image="images/work-8.png"
+        data-title="Work 08"
+        type="button">
+
+        <img
+          src="images/work-8.png"
+          alt="Work 08"
+          loading="lazy"
+        >
+
+        <span>08</span>
+
+      </button>
+
+
+      <!-- WORK 09 -->
+
+      <button
+        class="gallery-item cursor-hover"
+        data-image="images/work-9.jpg"
+        data-title="Work 09"
+        type="button">
+
+        <img
+          src="images/work-9.jpg"
+          alt="Work 09"
+          loading="lazy"
+        >
+
+        <span>09</span>
+
+      </button>
+
+
+      <!-- WORK 10 -->
+
+      <button
+        class="gallery-item wide cursor-hover"
+        data-image="images/work-10.jpg"
+        data-title="Work 10"
+        type="button">
+
+        <img
+          src="images/work-10.jpg"
+          alt="Work 10"
+          loading="lazy"
+        >
+
+        <span>10</span>
+
+      </button>
+
+
+      <!-- WORK 11 -->
+
+      <button
+        class="gallery-item tall cursor-hover"
+        data-image="images/work-11.png"
+        data-title="Work 11"
+        type="button">
+
+        <img
+          src="images/work-11.png"
+          alt="Work 11"
+          loading="lazy"
+        >
+
+        <span>11</span>
+
+      </button>
+
+
+      <!-- WORK 12 -->
+
+      <button
+        class="gallery-item cursor-hover"
+        data-image="images/work-12.png"
+        data-title="Work 12"
+        type="button">
+
+        <img
+          src="images/work-12.png"
+          alt="Work 12"
+          loading="lazy"
+        >
+
+        <span>12</span>
+
+      </button>
+
+
+      <!-- WORK 13 -->
+
+      <button
+        class="gallery-item cursor-hover"
+        data-image="images/work-13.png"
+        data-title="Work 13"
+        type="button">
+
+        <img
+          src="images/work-13.png"
+          alt="Work 13"
+          loading="lazy"
+        >
+
+        <span>13</span>
+
+      </button>
+
+
+      <!-- WORK 14 -->
+
+      <button
+        class="gallery-item wide cursor-hover"
+        data-image="images/work-14.png"
+        data-title="Work 14"
+        type="button">
+
+        <img
+          src="images/work-14.png"
+          alt="Work 14"
+          loading="lazy"
+        >
+
+        <span>14</span>
+
+      </button>
+
+
+      <!-- WORK 15 -->
+
+      <button
+        class="gallery-item tall cursor-hover"
+        data-image="images/work-15.png"
+        data-title="Work 15"
+        type="button">
+
+        <img
+          src="images/work-15.png"
+          alt="Work 15"
+          loading="lazy"
+        >
+
+        <span>15</span>
+
+      </button>
+
+
+      <!-- WORK 16 -->
+
+      <button
+        class="gallery-item cursor-hover"
+        data-image="images/work-16.png"
+        data-title="Work 16"
+        type="button">
+
+        <img
+          src="images/work-16.png"
+          alt="Work 16"
+          loading="lazy"
+        >
+
+        <span>16</span>
+
+      </button>
+
+
+      <!-- WORK 17 -->
+
+      <button
+        class="gallery-item wide cursor-hover"
+        data-image="images/work-17.jpg"
+        data-title="Work 17"
+        type="button">
+
+        <img
+          src="images/work-17.jpg"
+          alt="Work 17"
+          loading="lazy"
+        >
+
+        <span>17</span>
+
+      </button>
+
+
+      <!-- WORK 18 -->
+
+      <button
+        class="gallery-item tall cursor-hover"
+        data-image="images/work-18.png"
+        data-title="Work 18"
+        type="button">
+
+        <img
+          src="images/work-18.png"
+          alt="Work 18"
+          loading="lazy"
+        >
+
+        <span>18</span>
+
+      </button>
+
+
+      <!-- WORK 19 -->
+
+      <button
+        class="gallery-item cursor-hover"
+        data-image="images/work-19.png"
+        data-title="Work 19"
+        type="button">
+
+        <img
+          src="images/work-19.png"
+          alt="Work 19"
+          loading="lazy"
+        >
+
+        <span>19</span>
+
+      </button>
+
+
+      <!-- WORK 20 -->
+
+      <button
+        class="gallery-item cursor-hover"
+        data-image="images/work-20.jpg"
+        data-title="Work 20"
+        type="button">
+
+        <img
+          src="images/work-20.jpg"
+          alt="Work 20"
+          loading="lazy"
+        >
+
+        <span>20</span>
+
+      </button>
+
+
+      <!-- WORK 21 -->
+
+      <button
+        class="gallery-item tall cursor-hover"
+        data-image="images/work-21.jpg"
+        data-title="Work 21"
+        type="button">
+
+        <img
+          src="images/work-21.jpg"
+          alt="Work 21"
+          loading="lazy"
+        >
+
+        <span>21</span>
+
+      </button>
+
+
+      <!-- WORK 22 -->
+
+      <button
+        class="gallery-item wide cursor-hover"
+        data-image="images/work-22.jpg"
+        data-title="Work 22"
+        type="button">
+
+        <img
+          src="images/work-22.jpg"
+          alt="Work 22"
+          loading="lazy"
+        >
+
+        <span>22</span>
+
+      </button>
+
+
+      <!-- WORK 23 -->
+
+      <button
+        class="gallery-item cursor-hover"
+        data-image="images/work-23.jpg"
+        data-title="Work 23"
+        type="button">
+
+        <img
+          src="images/work-23.jpg"
+          alt="Work 23"
+          loading="lazy"
+        >
+
+        <span>23</span>
+
+      </button>
+
+
+      <!-- WORK 24 -->
+
+      <button
+        class="gallery-item tall cursor-hover"
+        data-image="images/work-24.jpg"
+        data-title="Work 24"
+        type="button">
+
+        <img
+          src="images/work-24.jpg"
+          alt="Work 24"
+          loading="lazy"
+        >
+
+        <span>24</span>
+
+      </button>
+
+
+      <!-- WORK 25 -->
+
+      <button
+        class="gallery-item cursor-hover"
+        data-image="images/work-25.jpg"
+        data-title="Work 25"
+        type="button">
+
+        <img
+          src="images/work-25.jpg"
+          alt="Work 25"
+          loading="lazy"
+        >
+
+        <span>25</span>
+
+      </button>
+
+
+      <!-- WORK 26 -->
+
+      <button
+        class="gallery-item wide cursor-hover"
+        data-image="images/work-26.jpg"
+        data-title="Work 26"
+        type="button">
+
+        <img
+          src="images/work-26.jpg"
+          alt="Work 26"
+          loading="lazy"
+        >
+
+        <span>26</span>
+
+      </button>
+
+
+      <!-- WORK 27 -->
+
+      <button
+        class="gallery-item tall cursor-hover"
+        data-image="images/work-27.jpg"
+        data-title="Work 27"
+        type="button">
+
+        <img
+          src="images/work-27.jpg"
+          alt="Work 27"
+          loading="lazy"
+        >
+
+        <span>27</span>
+
+      </button>
+
+
+      <!-- WORK 28 -->
+
+      <button
+        class="gallery-item cursor-hover"
+        data-image="images/work-28.jpg"
+        data-title="Work 28"
+        type="button">
+
+        <img
+          src="images/work-28.jpg"
+          alt="Work 28"
+          loading="lazy"
+        >
+
+        <span>28</span>
+
+      </button>
+
+
+      <!-- WORK 29 -->
+
+      <button
+        class="gallery-item cursor-hover"
+        data-image="images/work-29.jpg"
+        data-title="Work 29"
+        type="button">
+
+        <img
+          src="images/work-29.jpg"
+          alt="Work 29"
+          loading="lazy"
+        >
+
+        <span>29</span>
+
+      </button>
+
+
+      <!-- WORK 30 -->
+
+      <button
+        class="gallery-item wide cursor-hover"
+        data-image="images/work-30.jpg"
+        data-title="Work 30"
+        type="button">
+
+        <img
+          src="images/work-30.jpg"
+          alt="Work 30"
+          loading="lazy"
+        >
+
+        <span>30</span>
+
+      </button>
+
+
+      <!-- WORK 31 -->
+
+      <button
+        class="gallery-item tall cursor-hover"
+        data-image="images/work-31.jpg"
+        data-title="Work 31"
+        type="button">
+
+        <img
+          src="images/work-31.jpg"
+          alt="Work 31"
+          loading="lazy"
+        >
+
+        <span>31</span>
+
+      </button>
+
+
+      <!-- WORK 32 -->
+
+      <button
+        class="gallery-item cursor-hover"
+        data-image="images/work-32.jpg"
+        data-title="Work 32"
+        type="button">
+
+        <img
+          src="images/work-32.jpg"
+          alt="Work 32"
+          loading="lazy"
+        >
+
+        <span>32</span>
+
+      </button>
+
+
+      <!-- WORK 33 -->
+
+      <button
+        class="gallery-item wide cursor-hover"
+        data-image="images/work-33.jpg"
+        data-title="Work 33"
+        type="button">
+
+        <img
+          src="images/work-33.jpg"
+          alt="Work 33"
+          loading="lazy"
+        >
+
+        <span>33</span>
+
+      </button>
+
+
+      <!-- WORK 34 -->
+
+      <button
+        class="gallery-item cursor-hover"
+        data-image="images/work-34.jpg"
+        data-title="Work 34"
+        type="button">
+
+        <img
+          src="images/work-34.jpg"
+          alt="Work 34"
+          loading="lazy"
+        >
+
+        <span>34</span>
+
+      </button>
+
+
+      <!-- WORK 35 -->
+
+      <button
+        class="gallery-item tall cursor-hover"
+        data-image="images/work-35.jpg"
+        data-title="Work 35"
+        type="button">
+
+        <img
+          src="images/work-35.jpg"
+          alt="Work 35"
+          loading="lazy"
+        >
+
+        <span>35</span>
+
+      </button>
+
+
+      <!-- WORK 36 -->
+
+      <button
+        class="gallery-item cursor-hover"
+        data-image="images/work-36.jpg"
+        data-title="Work 36"
+        type="button">
+
+        <img
+          src="images/work-36.jpg"
+          alt="Work 36"
+          loading="lazy"
+        >
+
+        <span>36</span>
+
+      </button>
+
+
+      <!-- WORK 37 -->
+
+      <button
+        class="gallery-item wide cursor-hover"
+        data-image="images/work-37.jpg"
+        data-title="Work 37"
+        type="button">
+
+        <img
+          src="images/work-37.jpg"
+          alt="Work 37"
+          loading="lazy"
+        >
+
+        <span>37</span>
+
+      </button>
+
+
+      <!-- WORK 38 -->
+
+      <button
+        class="gallery-item tall cursor-hover"
+        data-image="images/work-38.jpg"
+        data-title="Work 38"
+        type="button">
+
+        <img
+          src="images/work-38.jpg"
+          alt="Work 38"
+          loading="lazy"
+        >
+
+        <span>38</span>
+
+      </button>
+
+
+      <!-- WORK 39 -->
+
+      <button
+        class="gallery-item cursor-hover"
+        data-image="images/work-39.jpg"
+        data-title="Work 39"
+        type="button">
+
+        <img
+          src="images/work-39.jpg"
+          alt="Work 39"
+          loading="lazy"
+        >
+
+        <span>39</span>
+
+      </button>
+
+
+      <!-- WORK 40 -->
+
+      <button
+        class="gallery-item cursor-hover"
+        data-image="images/work-40.jpg"
+        data-title="Work 40"
+        type="button">
+
+        <img
+          src="images/work-40.jpg"
+          alt="Work 40"
+          loading="lazy"
+        >
+
+        <span>40</span>
+
+      </button>
+
+
+      <!-- WORK 41 -->
+
+      <button
+        class="gallery-item wide cursor-hover"
+        data-image="images/work-41.jpg"
+        data-title="Work 41"
+        type="button">
+
+        <img
+          src="images/work-41.jpg"
+          alt="Work 41"
+          loading="lazy"
+        >
+
+        <span>41</span>
+
+      </button>
+
+
+      <!-- WORK 42 -->
+
+      <button
+        class="gallery-item tall cursor-hover"
+        data-image="images/work-42.jpg"
+        data-title="Work 42"
+        type="button">
+
+        <img
+          src="images/work-42.jpg"
+          alt="Work 42"
+          loading="lazy"
+        >
+
+        <span>42</span>
+
+      </button>
+
+
+      <!-- WORK 43 -->
+
+      <button
+        class="gallery-item cursor-hover"
+        data-image="images/work-43.jpg"
+        data-title="Work 43"
+        type="button">
+
+        <img
+          src="images/work-43.jpg"
+          alt="Work 43"
+          loading="lazy"
+        >
+
+        <span>43</span>
+
+      </button>
+
+
+      <!-- WORK 44 -->
+
+      <button
+        class="gallery-item wide cursor-hover"
+        data-image="images/work-44.jpg"
+        data-title="Work 44"
+        type="button">
+
+        <img
+          src="images/work-44.jpg"
+          alt="Work 44"
+          loading="lazy"
+        >
+
+        <span>44</span>
+
+      </button>
+
+
+      <!-- WORK 45 -->
+
+      <button
+        class="gallery-item tall cursor-hover"
+        data-image="images/work-45.jpg"
+        data-title="Work 45"
+        type="button">
+
+        <img
+          src="images/work-45.jpg"
+          alt="Work 45"
+          loading="lazy"
+        >
+
+        <span>45</span>
+
+      </button>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =======================================================
+     BEFORE / AFTER
+======================================================= -->
+
+<section class="before-after-section">
+
+  <div class="container">
+
+
+    <div class="ba-heading">
+
+      <div>
+
+        <div class="label">
+          04 / Transformation
+        </div>
+
+        <h2>
+          BEFORE<br>
+          <span>AFTER</span>
+        </h2>
+
+      </div>
+
+      <p>
+        A closer look at the editing
+        process — from the original
+        capture to the final visual.
+      </p>
+
+    </div>
+
+
+    <!-- ===================================================
+         BEFORE / AFTER 01
+    =================================================== -->
+
+    <div class="ba-project">
+
+      <div class="ba-title">
+
+        <span>01</span>
+
+        <strong>
+          ORIGINAL → FINAL
+        </strong>
+
+      </div>
+
+
+      <div class="ba-slider">
+
+        <img
+          class="ba-after"
+          src="images/work-47.jpg"
+          alt="After editing — work 47"
+          loading="lazy"
+        >
+
+        <div class="ba-before-wrap">
+
+          <img
+            src="images/work-46.jpg"
+            alt="Before editing — work 46"
+            loading="lazy"
+          >
+
+        </div>
+
+
+        <div class="ba-divider">
+
+          <span></span>
+
+        </div>
+
+
+        <div class="ba-label ba-label-before">
+          BEFORE
+        </div>
+
+        <div class="ba-label ba-label-after">
+          AFTER
+        </div>
+
+
+        <input
+          class="ba-range"
+          type="range"
+          min="0"
+          max="100"
+          value="50"
+          aria-label="Compare before and after">
+
+      </div>
+
+    </div>
+
+
+
+    <!-- ===================================================
+         BEFORE / AFTER 02
+    =================================================== -->
+
+    <div class="ba-project">
+
+      <div class="ba-title">
+
+        <span>02</span>
+
+        <strong>
+          ORIGINAL → FINAL
+        </strong>
+
+      </div>
+
+
+      <div class="ba-slider">
+
+        <img
+          class="ba-after"
+          src="images/work-49.jpg"
+          alt="After editing — work 49"
+          loading="lazy"
+        >
+
+        <div class="ba-before-wrap">
+
+          <img
+            src="images/work-48.jpg"
+            alt="Before editing — work 48"
+            loading="lazy"
+          >
+
+        </div>
+
+
+        <div class="ba-divider">
+
+          <span></span>
+
+        </div>
+
+
+        <div class="ba-label ba-label-before">
+          BEFORE
+        </div>
+
+        <div class="ba-label ba-label-after">
+          AFTER
+        </div>
+
+
+        <input
+          class="ba-range"
+          type="range"
+          min="0"
+          max="100"
+          value="50"
+          aria-label="Compare before and after">
+
+      </div>
+
+    </div>
+
+
+
+    <!-- ===================================================
+         BEFORE / AFTER 03
+    =================================================== -->
+
+    <div class="ba-project">
+
+      <div class="ba-title">
+
+        <span>03</span>
+
+        <strong>
+          ORIGINAL → FINAL
+        </strong>
+
+      </div>
+
+
+      <div class="ba-slider">
+
+        <img
+          class="ba-after"
+          src="images/work-51.jpg"
+          alt="After editing — work 51"
+          loading="lazy"
+        >
+
+        <div class="ba-before-wrap">
+
+          <img
+            src="images/work-50.jpg"
+            alt="Before editing — work 50"
+            loading="lazy"
+          >
+
+        </div>
+
+
+        <div class="ba-divider">
+
+          <span></span>
+
+        </div>
+
+
+        <div class="ba-label ba-label-before">
+          BEFORE
+        </div>
+
+        <div class="ba-label ba-label-after">
+          AFTER
+        </div>
+
+
+        <input
+          class="ba-range"
+          type="range"
+          min="0"
+          max="100"
+          value="50"
+          aria-label="Compare before and after">
+
+      </div>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+
+<!-- =======================================================
+     FULLSCREEN IMAGE VIEWER
+======================================================= -->
+
+<div
+  class="lightbox"
+  id="lightbox"
+  aria-hidden="true">
+
+
+  <button
+    class="lightbox-close"
+    id="lightboxClose"
+    type="button"
+    aria-label="Close image viewer">
+
+    ×
+
+  </button>
+
+
+  <button
+    class="lightbox-prev"
+    id="lightboxPrev"
+    type="button"
+    aria-label="Previous image">
+
+    ←
+
+  </button>
+
+
+  <div class="lightbox-content">
+
+    <img
+      id="lightboxImage"
+      src=""
+      alt=""
+    >
+
+    <div
+      class="lightbox-caption"
+      id="lightboxCaption">
+
+    </div>
+
+  </div>
+
+
+  <button
+    class="lightbox-next"
+    id="lightboxNext"
+    type="button"
+    aria-label="Next image">
+
+    →
+
+  </button>
+
+
+</div>
+
+
+
+<!-- =======================================================
+     PART 3 WILL CONTINUE HERE
+======================================================= -->
+  <!-- =======================================================
+     PART 3 — SKILLS + ABOUT + BOOKING + PRICING + CONTACT
+======================================================= -->
+
+
+<style>
+
+/* =========================================================
+   17 — FEATURED WORK
+========================================================= */
+
+.featured-work{
+  padding:140px 0 120px;
+  border-bottom:1px solid var(--line);
+}
+
+.work-heading{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  gap:40px;
+  margin-bottom:75px;
+}
+
+.work-heading h2{
+  margin-top:18px;
+  font-size:clamp(65px,10vw,145px);
+  line-height:.78;
+  letter-spacing:-.075em;
+  font-weight:900;
+}
+
+.work-heading p{
+  width:min(350px,100%);
+  color:var(--grey);
+  font-size:13px;
+  line-height:1.7;
+}
+
+.featured-grid{
+  display:grid;
+  grid-template-columns:1.45fr 1fr 1fr;
+  gap:16px;
+}
+
+.featured-card{
+  position:relative;
+  min-height:620px;
+  overflow:hidden;
+  background:#111;
+}
+
+.featured-card.featured-large{
+  min-height:720px;
+}
+
+.featured-image{
+  position:absolute;
+  inset:0;
+}
+
+.featured-image img{
   width:100%;
   height:100%;
   object-fit:cover;
-  object-position:center;
-  filter:brightness(.72);
-  transform:scale(1.02);
+  transition:transform .8s cubic-bezier(.2,.7,.2,1);
 }
 
-.hero-overlay{
+.featured-card:hover .featured-image img{
+  transform:scale(1.06);
+}
+
+.image-overlay{
   position:absolute;
   inset:0;
   background:
     linear-gradient(
-      90deg,
-      rgba(0,0,0,.72) 0%,
-      rgba(0,0,0,.25) 55%,
-      rgba(0,0,0,.15) 100%
-    ),
-    linear-gradient(
-      0deg,
-      rgba(0,0,0,.65),
-      transparent 50%
+      to bottom,
+      transparent 45%,
+      rgba(0,0,0,.75)
     );
 }
 
-.hero-content{
-  position:relative;
-  z-index:2;
-  width:100%;
+.featured-info{
+  position:absolute;
+  left:25px;
+  right:25px;
+  bottom:25px;
+  z-index:3;
+  color:#fff;
 }
 
-.eyebrow{
-  color:#bbb;
-  font-size:10px;
-  letter-spacing:.28em;
-  text-transform:uppercase;
+.featured-info span{
+  display:block;
+  font-size:9px;
+  letter-spacing:.2em;
+  margin-bottom:10px;
+  opacity:.7;
 }
 
-.hero h1{
-  margin-top:22px;
-  font-size:clamp(65px,12vw,170px);
-  line-height:.76;
-  letter-spacing:-.08em;
+.featured-info strong{
+  font-size:24px;
+  letter-spacing:-.03em;
+}
+
+
+/* =========================================================
+   18 — VISUAL STORY
+========================================================= */
+
+.visual-story{
+  padding:150px 0;
+  border-bottom:1px solid var(--line);
+}
+
+.story-grid{
+  display:grid;
+  grid-template-columns:.85fr 1.15fr;
+  align-items:center;
+  gap:90px;
+}
+
+.story-copy h2{
+  margin-top:20px;
+  font-size:clamp(60px,8vw,125px);
+  line-height:.78;
+  letter-spacing:-.075em;
   font-weight:900;
 }
 
-.hero h1 span{
-  display:block;
-}
-
-.hero h1 span:nth-child(2){
-  padding-left:8vw;
-}
-
-.hero h1 span:nth-child(3){
-  padding-left:2vw;
-}
-
-.hero-description{
-  max-width:510px;
+.story-copy p{
+  max-width:430px;
   margin-top:35px;
-  color:#ddd;
-  font-size:15px;
-  line-height:1.75;
+  color:var(--grey);
+  font-size:14px;
+  line-height:1.8;
 }
 
-.hero-buttons{
-  display:flex;
-  gap:12px;
-  flex-wrap:wrap;
-  margin-top:28px;
-}
-
-.btn{
+.text-link{
   display:inline-flex;
   align-items:center;
-  justify-content:center;
-  min-height:44px;
-  padding:0 20px;
-  border:1px solid rgba(255,255,255,.35);
-  border-radius:999px;
-  color:#fff;
-  font-size:10px;
-  font-weight:800;
-  letter-spacing:.13em;
+  gap:12px;
+  margin-top:35px;
+  padding-bottom:8px;
+  border-bottom:1px solid currentColor;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.15em;
   text-transform:uppercase;
-  transition:.3s;
 }
 
-.btn:hover{
-  background:#fff;
-  color:#000;
-  border-color:#fff;
-  transform:translateY(-2px);
+.text-link span{
+  font-size:18px;
+  transition:transform .3s ease;
 }
 
-.btn.white{
-  background:#fff;
-  color:#000;
-  border-color:#fff;
-}
-
-
-/* =========================
-   SECTION
-========================= */
-
-section{
-  padding:120px 0;
-  border-top:1px solid #181818;
-}
-
-.section-head{
-  display:flex;
-  justify-content:space-between;
-  align-items:flex-end;
-  gap:35px;
-  margin-bottom:55px;
-}
-
-.section-number{
-  color:#777;
-  font-size:10px;
-  letter-spacing:.22em;
-  text-transform:uppercase;
-  margin-bottom:15px;
-}
-
-.section-head h2{
-  font-size:clamp(48px,7vw,90px);
-  line-height:.85;
-  letter-spacing:-.07em;
-}
-
-.section-head p{
-  max-width:420px;
-  color:#888;
-  font-size:14px;
-  line-height:1.7;
-}
-
-em{
-  font-family:Georgia,serif;
-  font-weight:400;
-}
-
-
-/* =========================
-   FEATURED WORK
-========================= */
-
-.featured{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:18px;
-}
-
-.feature-card{
-  background:#101010;
-  border:1px solid var(--line);
-  overflow:hidden;
-  border-radius:22px;
-  transition:.4s;
-}
-
-.feature-card:hover{
-  transform:translateY(-5px);
-  border-color:#444;
-}
-
-.feature-image{
-  aspect-ratio:4/5;
-  overflow:hidden;
-  background:#151515;
-}
-
-.feature-image img{
-  height:100%;
-  object-fit:cover;
-  transition:transform .6s;
-}
-
-.feature-card:hover .feature-image img{
-  transform:scale(1.05);
-}
-
-.feature-info{
-  padding:20px;
-}
-
-.feature-info small{
-  color:#777;
-  font-size:9px;
-  letter-spacing:.2em;
-}
-
-.feature-info h3{
-  margin-top:9px;
-  font-size:22px;
-  letter-spacing:-.04em;
-}
-
-
-/* =========================
-   IMAGE + TEXT
-========================= */
-
-.story{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  min-height:620px;
+.text-link:hover span{
+  transform:translate(4px,-4px);
 }
 
 .story-image{
+  height:750px;
   overflow:hidden;
   background:#111;
 }
@@ -358,1061 +2630,2194 @@ em{
   width:100%;
   height:100%;
   object-fit:cover;
+  transition:transform .8s ease;
 }
 
-.story-text{
-  background:#ededE8;
-  color:#080808;
-  padding:70px;
+.story-image:hover img{
+  transform:scale(1.04);
+}
+
+
+/* =========================================================
+   19 — GALLERY
+========================================================= */
+
+.gallery-section{
+  padding:150px 0;
+  border-bottom:1px solid var(--line);
+}
+
+.gallery-header{
   display:flex;
-  justify-content:center;
-  flex-direction:column;
+  align-items:flex-end;
+  justify-content:space-between;
+  margin-bottom:80px;
 }
 
-.story-text .eyebrow{
-  color:#666;
+.gallery-header h2{
+  margin-top:18px;
+  font-size:clamp(65px,10vw,145px);
+  line-height:.78;
+  letter-spacing:-.075em;
+  font-weight:900;
 }
 
-.story-text h2{
-  margin:20px 0;
-  font-size:clamp(48px,6vw,80px);
-  line-height:.88;
-  letter-spacing:-.07em;
+.gallery-count{
+  display:flex;
+  align-items:flex-end;
+  gap:10px;
 }
 
-.story-text p{
-  max-width:470px;
-  color:#444;
-  font-size:15px;
-  line-height:1.8;
+.gallery-count span{
+  font-size:70px;
+  line-height:.8;
+  font-weight:900;
+  letter-spacing:-.06em;
 }
 
+.gallery-count small{
+  font-size:9px;
+  letter-spacing:.2em;
+  color:var(--grey);
+}
 
-/* =========================
-   GALLERY
-========================= */
-
-.gallery{
-  columns:3 260px;
-  column-gap:16px;
+.masonry-gallery{
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  grid-auto-rows:110px;
+  gap:14px;
 }
 
 .gallery-item{
-  break-inside:avoid;
-  margin-bottom:16px;
-  border-radius:18px;
+  position:relative;
+  border:0;
+  padding:0;
   overflow:hidden;
   background:#111;
-  border:1px solid var(--line);
   cursor:pointer;
 }
 
+.gallery-item:nth-child(1){
+  grid-column:span 5;
+  grid-row:span 6;
+}
+
+.gallery-item:nth-child(2){
+  grid-column:span 7;
+  grid-row:span 5;
+}
+
+.gallery-item:nth-child(3){
+  grid-column:span 4;
+  grid-row:span 5;
+}
+
+.gallery-item:nth-child(4){
+  grid-column:span 4;
+  grid-row:span 7;
+}
+
+.gallery-item:nth-child(5){
+  grid-column:span 4;
+  grid-row:span 5;
+}
+
+.gallery-item:nth-child(6){
+  grid-column:span 8;
+  grid-row:span 6;
+}
+
+.gallery-item:nth-child(7){
+  grid-column:span 4;
+  grid-row:span 5;
+}
+
+.gallery-item:nth-child(8){
+  grid-column:span 5;
+  grid-row:span 7;
+}
+
+.gallery-item:nth-child(9){
+  grid-column:span 7;
+  grid-row:span 5;
+}
+
+.gallery-item:nth-child(10){
+  grid-column:span 6;
+  grid-row:span 6;
+}
+
+.gallery-item:nth-child(11){
+  grid-column:span 6;
+  grid-row:span 5;
+}
+
+.gallery-item:nth-child(12){
+  grid-column:span 4;
+  grid-row:span 6;
+}
+
+.gallery-item:nth-child(13){
+  grid-column:span 4;
+  grid-row:span 5;
+}
+
+.gallery-item:nth-child(14){
+  grid-column:span 4;
+  grid-row:span 6;
+}
+
+.gallery-item:nth-child(15){
+  grid-column:span 8;
+  grid-row:span 7;
+}
+
+.gallery-item:nth-child(16){
+  grid-column:span 4;
+  grid-row:span 5;
+}
+
+.gallery-item:nth-child(17){
+  grid-column:span 7;
+  grid-row:span 6;
+}
+
+.gallery-item:nth-child(18){
+  grid-column:span 5;
+  grid-row:span 7;
+}
+
+.gallery-item:nth-child(19){
+  grid-column:span 4;
+  grid-row:span 5;
+}
+
+.gallery-item:nth-child(20){
+  grid-column:span 8;
+  grid-row:span 6;
+}
+
+.gallery-item:nth-child(21){
+  grid-column:span 5;
+  grid-row:span 7;
+}
+
+.gallery-item:nth-child(22){
+  grid-column:span 7;
+  grid-row:span 5;
+}
+
+.gallery-item:nth-child(23){
+  grid-column:span 4;
+  grid-row:span 6;
+}
+
+.gallery-item:nth-child(24){
+  grid-column:span 4;
+  grid-row:span 5;
+}
+
+.gallery-item:nth-child(25){
+  grid-column:span 4;
+  grid-row:span 6;
+}
+
+.gallery-item:nth-child(26){
+  grid-column:span 8;
+  grid-row:span 7;
+}
+
+.gallery-item:nth-child(27){
+  grid-column:span 5;
+  grid-row:span 6;
+}
+
+.gallery-item:nth-child(28){
+  grid-column:span 7;
+  grid-row:span 5;
+}
+
+.gallery-item:nth-child(29){
+  grid-column:span 4;
+  grid-row:span 5;
+}
+
+.gallery-item:nth-child(30){
+  grid-column:span 8;
+  grid-row:span 6;
+}
+
+.gallery-item:nth-child(31){
+  grid-column:span 4;
+  grid-row:span 7;
+}
+
+.gallery-item:nth-child(32){
+  grid-column:span 4;
+  grid-row:span 5;
+}
+
+.gallery-item:nth-child(33){
+  grid-column:span 8;
+  grid-row:span 6;
+}
+
+.gallery-item:nth-child(34){
+  grid-column:span 5;
+  grid-row:span 6;
+}
+
+.gallery-item:nth-child(35){
+  grid-column:span 7;
+  grid-row:span 5;
+}
+
+.gallery-item:nth-child(36){
+  grid-column:span 4;
+  grid-row:span 6;
+}
+
+.gallery-item:nth-child(37){
+  grid-column:span 8;
+  grid-row:span 7;
+}
+
+.gallery-item:nth-child(38){
+  grid-column:span 4;
+  grid-row:span 6;
+}
+
+.gallery-item:nth-child(39){
+  grid-column:span 5;
+  grid-row:span 5;
+}
+
+.gallery-item:nth-child(40){
+  grid-column:span 7;
+  grid-row:span 6;
+}
+
+.gallery-item:nth-child(41){
+  grid-column:span 4;
+  grid-row:span 6;
+}
+
+.gallery-item:nth-child(42){
+  grid-column:span 4;
+  grid-row:span 7;
+}
+
+.gallery-item:nth-child(43){
+  grid-column:span 4;
+  grid-row:span 5;
+}
+
+.gallery-item:nth-child(44){
+  grid-column:span 8;
+  grid-row:span 6;
+}
+
+.gallery-item:nth-child(45){
+  grid-column:span 5;
+  grid-row:span 7;
+}
+
 .gallery-item img{
-  height:auto;
-  transition:transform .45s;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:
+    transform .7s cubic-bezier(.2,.7,.2,1),
+    filter .4s ease;
+}
+
+.gallery-item::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    to bottom,
+    transparent 55%,
+    rgba(0,0,0,.55)
+  );
+  opacity:0;
+  transition:opacity .4s ease;
+}
+
+.gallery-item:hover::after{
+  opacity:1;
 }
 
 .gallery-item:hover img{
-  transform:scale(1.035);
+  transform:scale(1.06);
+}
+
+.gallery-item span{
+  position:absolute;
+  z-index:3;
+  left:18px;
+  bottom:15px;
+  color:#fff;
+  font-size:10px;
+  letter-spacing:.15em;
+  opacity:0;
+  transition:opacity .3s ease;
+}
+
+.gallery-item:hover span{
+  opacity:1;
 }
 
 
-/* =========================
-   ABOUT
-========================= */
+/* =========================================================
+   20 — BEFORE / AFTER
+========================================================= */
+
+.before-after-section{
+  padding:150px 0;
+  border-bottom:1px solid var(--line);
+}
+
+.ba-heading{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  gap:50px;
+  margin-bottom:90px;
+}
+
+.ba-heading h2{
+  margin-top:18px;
+  font-size:clamp(70px,10vw,145px);
+  line-height:.76;
+  letter-spacing:-.075em;
+  font-weight:900;
+}
+
+.ba-heading h2 span{
+  color:var(--grey);
+}
+
+.ba-heading p{
+  width:min(350px,100%);
+  color:var(--grey);
+  font-size:13px;
+  line-height:1.7;
+}
+
+.ba-project{
+  margin-bottom:100px;
+}
+
+.ba-project:last-child{
+  margin-bottom:0;
+}
+
+.ba-title{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:18px;
+  font-size:10px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+}
+
+.ba-title span{
+  color:var(--grey);
+}
+
+.ba-slider{
+  --position:50%;
+  position:relative;
+  width:100%;
+  aspect-ratio:16/10;
+  overflow:hidden;
+  background:#111;
+  user-select:none;
+}
+
+.ba-after{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.ba-before-wrap{
+  position:absolute;
+  inset:0;
+  width:var(--position);
+  overflow:hidden;
+  z-index:2;
+}
+
+.ba-before-wrap img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:left center;
+  max-width:none;
+}
+
+.ba-divider{
+  position:absolute;
+  top:0;
+  bottom:0;
+  left:var(--position);
+  width:2px;
+  background:#fff;
+  z-index:5;
+  transform:translateX(-50%);
+  pointer-events:none;
+}
+
+.ba-divider span{
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:48px;
+  height:48px;
+  border:1px solid #fff;
+  border-radius:50%;
+  background:#000;
+  transform:translate(-50%,-50%);
+}
+
+.ba-divider span::before,
+.ba-divider span::after{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  color:#fff;
+  font-size:14px;
+}
+
+.ba-divider span::before{
+  content:"‹";
+  left:12px;
+}
+
+.ba-divider span::after{
+  content:"›";
+  right:12px;
+}
+
+.ba-label{
+  position:absolute;
+  top:20px;
+  z-index:7;
+  padding:8px 11px;
+  background:rgba(0,0,0,.65);
+  color:#fff;
+  font-size:8px;
+  letter-spacing:.18em;
+}
+
+.ba-label-before{
+  left:20px;
+}
+
+.ba-label-after{
+  right:20px;
+}
+
+.ba-range{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  opacity:0;
+  z-index:10;
+  cursor:ew-resize;
+  margin:0;
+}
+
+
+/* =========================================================
+   21 — ABOUT
+========================================================= */
+
+.about-section{
+  padding:150px 0;
+  border-bottom:1px solid var(--line);
+}
 
 .about-grid{
   display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:18px;
+  grid-template-columns:1fr 1.3fr;
+  gap:90px;
 }
 
-.about-card{
-  padding:34px;
-  background:var(--soft);
-  border:1px solid var(--line);
-  border-radius:24px;
+.about-title{
+  font-size:clamp(60px,9vw,135px);
+  line-height:.78;
+  letter-spacing:-.075em;
+  font-weight:900;
 }
 
-.about-card .big{
-  color:#eee;
-  font-size:25px;
-  line-height:1.35;
+.about-copy{
+  padding-top:15px;
 }
 
-.about-card p{
-  color:#999;
-  line-height:1.8;
-  margin-top:20px;
+.about-copy > p{
+  max-width:680px;
+  font-size:clamp(24px,3vw,43px);
+  line-height:1.1;
+  letter-spacing:-.04em;
 }
 
-.skills{
+.about-meta{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:30px;
+  margin-top:70px;
+  padding-top:30px;
+  border-top:1px solid var(--line);
+}
+
+.meta-item span{
+  display:block;
+  font-size:9px;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--grey);
+  margin-bottom:10px;
+}
+
+.meta-item strong{
+  font-size:14px;
+}
+
+
+/* =========================================================
+   22 — SKILLS
+========================================================= */
+
+.skills-section{
+  padding:140px 0;
+  border-bottom:1px solid var(--line);
+}
+
+.skills-heading{
+  margin-bottom:70px;
+}
+
+.skills-heading h2{
+  margin-top:18px;
+  font-size:clamp(65px,10vw,145px);
+  line-height:.76;
+  letter-spacing:-.075em;
+  font-weight:900;
+}
+
+.skill-list{
+  border-top:1px solid var(--line);
+}
+
+.skill-row{
+  position:relative;
+  display:grid;
+  grid-template-columns:80px 1fr auto;
+  align-items:center;
+  gap:30px;
+  min-height:125px;
+  border-bottom:1px solid var(--line);
+  overflow:hidden;
+}
+
+.skill-number{
+  color:var(--grey);
+  font-size:10px;
+}
+
+.skill-name{
+  font-size:clamp(35px,5vw,72px);
+  line-height:.9;
+  letter-spacing:-.055em;
+  font-weight:900;
+  transition:transform .4s ease;
+}
+
+.skill-detail{
+  color:var(--grey);
+  font-size:10px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+.skill-row:hover .skill-name{
+  transform:translateX(15px);
+}
+
+
+/* =========================================================
+   23 — BOOKING PROCESS
+========================================================= */
+
+.process-section{
+  padding:140px 0;
+  border-bottom:1px solid var(--line);
+}
+
+.process-heading{
   display:flex;
-  gap:9px;
-  flex-wrap:wrap;
-  margin-top:25px;
+  justify-content:space-between;
+  align-items:flex-end;
+  gap:40px;
+  margin-bottom:75px;
 }
 
-.skill{
-  padding:9px 12px;
-  border:1px solid #2b2b2b;
-  border-radius:999px;
-  color:#ccc;
+.process-heading h2{
+  margin-top:18px;
+  font-size:clamp(60px,9vw,135px);
+  line-height:.78;
+  letter-spacing:-.075em;
+  font-weight:900;
+}
+
+.process-heading p{
+  width:min(340px,100%);
+  color:var(--grey);
+  font-size:13px;
+  line-height:1.7;
+}
+
+.process-grid{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:1px;
+  background:var(--line);
+  border:1px solid var(--line);
+}
+
+.process-card{
+  min-height:250px;
+  padding:25px;
+  background:var(--black);
+}
+
+.process-card span{
+  color:var(--grey);
+  font-size:10px;
+}
+
+.process-card h3{
+  margin-top:90px;
+  font-size:25px;
+  letter-spacing:-.04em;
+}
+
+.process-card p{
+  margin-top:10px;
+  color:var(--grey);
   font-size:11px;
+  line-height:1.5;
 }
 
 
-/* =========================
-   CONTACT
-========================= */
+/* =========================================================
+   24 — PRICING
+========================================================= */
+
+.pricing-section{
+  padding:150px 0;
+  border-bottom:1px solid var(--line);
+}
+
+.pricing-heading{
+  text-align:center;
+  margin-bottom:85px;
+}
+
+.pricing-heading h2{
+  margin-top:18px;
+  font-size:clamp(65px,10vw,150px);
+  line-height:.75;
+  letter-spacing:-.08em;
+  font-weight:900;
+}
+
+.pricing-heading p{
+  max-width:500px;
+  margin:30px auto 0;
+  color:var(--grey);
+  font-size:13px;
+  line-height:1.7;
+}
+
+.pricing-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  align-items:stretch;
+  gap:15px;
+}
+
+.price-card{
+  position:relative;
+  padding:38px 30px 30px;
+  min-height:570px;
+  background:var(--card);
+  border:1px solid var(--line);
+  display:flex;
+  flex-direction:column;
+  transition:
+    transform .4s ease,
+    border-color .4s ease;
+}
+
+.price-card:hover{
+  transform:translateY(-8px);
+}
+
+.price-card.popular{
+  transform:translateY(-18px);
+  border:2px solid var(--white);
+}
+
+.price-card.popular:hover{
+  transform:translateY(-25px);
+}
+
+.popular-badge{
+  position:absolute;
+  top:-13px;
+  left:50%;
+  transform:translateX(-50%);
+  padding:7px 13px;
+  background:var(--white);
+  color:var(--black);
+  font-size:8px;
+  font-weight:900;
+  letter-spacing:.18em;
+  white-space:nowrap;
+}
+
+.price-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  font-size:9px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--grey);
+}
+
+.price-name{
+  margin-top:55px;
+  font-size:38px;
+  font-weight:900;
+  letter-spacing:-.05em;
+}
+
+.price{
+  margin-top:12px;
+  font-size:65px;
+  line-height:.9;
+  font-weight:900;
+  letter-spacing:-.07em;
+}
+
+.price small{
+  font-size:13px;
+  letter-spacing:0;
+  color:var(--grey);
+  font-weight:400;
+}
+
+.price-features{
+  margin-top:45px;
+  padding:0;
+  list-style:none;
+}
+
+.price-features li{
+  padding:13px 0;
+  border-bottom:1px solid var(--line);
+  font-size:12px;
+  color:var(--soft);
+}
+
+.price-features li::before{
+  content:"✓";
+  margin-right:10px;
+  color:var(--white);
+}
+
+.book-button{
+  margin-top:auto;
+  padding:17px 20px;
+  border:1px solid var(--white);
+  background:transparent;
+  color:var(--white);
+  text-align:center;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.17em;
+  text-transform:uppercase;
+  transition:.35s ease;
+}
+
+.book-button:hover{
+  background:var(--white);
+  color:var(--black);
+}
+
+
+/* =========================================================
+   25 — WHY MURUGADOSS
+========================================================= */
+
+.why-section{
+  padding:150px 0;
+  border-bottom:1px solid var(--line);
+}
+
+.why-heading{
+  margin-bottom:70px;
+}
+
+.why-heading h2{
+  margin-top:18px;
+  font-size:clamp(65px,10vw,145px);
+  line-height:.76;
+  letter-spacing:-.075em;
+  font-weight:900;
+}
+
+.why-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:1px;
+  background:var(--line);
+  border:1px solid var(--line);
+}
+
+.why-card{
+  min-height:280px;
+  padding:28px;
+  background:var(--black);
+}
+
+.why-card span{
+  color:var(--grey);
+  font-size:10px;
+}
+
+.why-card h3{
+  margin-top:100px;
+  font-size:24px;
+  letter-spacing:-.04em;
+}
+
+.why-card p{
+  margin-top:10px;
+  color:var(--grey);
+  font-size:11px;
+  line-height:1.6;
+}
+
+
+/* =========================================================
+   26 — SERVICE AREA + SEASONAL
+========================================================= */
+
+.info-strip{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  border-bottom:1px solid var(--line);
+}
+
+.info-box{
+  padding:55px 4%;
+}
+
+.info-box + .info-box{
+  border-left:1px solid var(--line);
+}
+
+.info-box span{
+  display:block;
+  color:var(--grey);
+  font-size:9px;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  margin-bottom:15px;
+}
+
+.info-box strong{
+  font-size:clamp(25px,3vw,45px);
+  letter-spacing:-.04em;
+}
+
+.info-box p{
+  margin-top:12px;
+  color:var(--grey);
+  font-size:12px;
+  line-height:1.6;
+}
+
+
+/* =========================================================
+   27 — CONTACT
+========================================================= */
 
 .contact-section{
-  padding-bottom:60px;
+  padding:160px 0 90px;
 }
 
 .contact-box{
-  background:#f1f1ed;
-  color:#080808;
-  border-radius:30px;
-  padding:85px 30px;
-  text-align:center;
+  position:relative;
+  padding:80px 5%;
+  background:var(--white);
+  color:var(--black);
+  overflow:hidden;
 }
 
-.contact-box .eyebrow{
-  color:#666;
+.contact-box::before{
+  content:"";
+  position:absolute;
+  width:450px;
+  height:450px;
+  right:-180px;
+  top:-200px;
+  border:1px solid rgba(0,0,0,.15);
+  border-radius:50%;
 }
 
-.contact-box h2{
-  margin-top:18px;
-  font-size:clamp(50px,8vw,100px);
-  line-height:.82;
-  letter-spacing:-.075em;
+.contact-label{
+  font-size:10px;
+  letter-spacing:.2em;
+  text-transform:uppercase;
 }
 
-.contact-box p{
-  max-width:570px;
-  margin:25px auto 0;
-  color:#444;
-  font-size:15px;
+.contact-title{
+  margin-top:25px;
+  font-size:clamp(65px,11vw,165px);
+  line-height:.72;
+  letter-spacing:-.08em;
+  font-weight:900;
+}
+
+.contact-copy{
+  max-width:500px;
+  margin-top:35px;
+  font-size:14px;
   line-height:1.7;
+  color:#555;
 }
 
 .contact-links{
   display:flex;
-  justify-content:center;
-  gap:12px;
   flex-wrap:wrap;
-  margin-top:35px;
+  gap:10px;
+  margin-top:45px;
 }
 
-.contact-btn{
-  min-height:48px;
-  padding:0 23px;
+.contact-link{
   display:inline-flex;
   align-items:center;
-  justify-content:center;
+  gap:10px;
+  padding:14px 19px;
   border:1px solid #111;
-  border-radius:999px;
   font-size:10px;
   font-weight:800;
-  letter-spacing:.12em;
+  letter-spacing:.13em;
   text-transform:uppercase;
-  transition:.3s;
+  transition:.3s ease;
 }
 
-.contact-btn:hover{
-  background:#080808;
+.contact-link:hover{
+  background:#111;
   color:#fff;
 }
 
 
-/* =========================
-   LIGHTBOX
-========================= */
+/* =========================================================
+   28 — FOOTER
+========================================================= */
+
+.footer{
+  padding:60px 0 35px;
+}
+
+.footer-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  gap:30px;
+  padding-bottom:30px;
+  border-bottom:1px solid var(--line);
+}
+
+.footer-brand{
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:.16em;
+}
+
+.footer-copy{
+  color:var(--grey);
+  font-size:10px;
+}
+
+.footer-big{
+  margin-top:80px;
+  font-size:clamp(80px,17vw,250px);
+  line-height:.7;
+  letter-spacing:-.09em;
+  font-weight:900;
+  text-align:center;
+}
+
+
+/* =========================================================
+   29 — LIGHTBOX
+========================================================= */
 
 .lightbox{
   position:fixed;
   inset:0;
-  z-index:500;
+  z-index:9990;
+  background:rgba(0,0,0,.96);
   display:none;
   align-items:center;
   justify-content:center;
-  background:rgba(0,0,0,.96);
-  padding:25px;
+  padding:40px;
 }
 
-.lightbox.active{
+.lightbox.open{
   display:flex;
 }
 
-.lightbox img{
-  max-width:94vw;
-  max-height:90vh;
+.lightbox-content{
+  width:min(1200px,88vw);
+  height:86vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+}
+
+.lightbox-content img{
+  max-width:100%;
+  max-height:78vh;
   width:auto;
   height:auto;
   object-fit:contain;
 }
 
-.close{
-  position:absolute;
-  top:20px;
-  right:25px;
-  border:0;
-  background:none;
-  color:#fff;
-  font-size:38px;
-  cursor:pointer;
-}
-
-
-/* =========================
-   FOOTER
-========================= */
-
-footer{
-  padding:35px 0 55px;
-  display:flex;
-  justify-content:space-between;
-  color:#666;
+.lightbox-caption{
+  margin-top:14px;
+  color:#aaa;
   font-size:9px;
-  letter-spacing:.18em;
+  letter-spacing:.2em;
   text-transform:uppercase;
 }
 
+.lightbox-close,
+.lightbox-prev,
+.lightbox-next{
+  position:absolute;
+  z-index:5;
+  border:1px solid rgba(255,255,255,.4);
+  background:transparent;
+  color:#fff;
+  cursor:pointer;
+  width:45px;
+  height:45px;
+  border-radius:50%;
+  transition:.3s ease;
+}
 
-/* =========================
-   MOBILE
-========================= */
+.lightbox-close:hover,
+.lightbox-prev:hover,
+.lightbox-next:hover{
+  background:#fff;
+  color:#000;
+}
+
+.lightbox-close{
+  top:25px;
+  right:30px;
+  font-size:24px;
+}
+
+.lightbox-prev{
+  left:30px;
+  top:50%;
+  transform:translateY(-50%);
+}
+
+.lightbox-next{
+  right:30px;
+  top:50%;
+  transform:translateY(-50%);
+}
+
+
+/* =========================================================
+   30 — RESPONSIVE
+========================================================= */
+
+@media(max-width:1000px){
+
+  .featured-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .featured-card.featured-large{
+    grid-column:span 2;
+    min-height:650px;
+  }
+
+  .story-grid{
+    grid-template-columns:1fr;
+    gap:55px;
+  }
+
+  .story-image{
+    height:650px;
+  }
+
+  .process-grid{
+    grid-template-columns:repeat(3,1fr);
+  }
+
+  .process-card:nth-child(4),
+  .process-card:nth-child(5){
+    grid-column:span 1;
+  }
+
+  .pricing-grid{
+    grid-template-columns:1fr;
+    max-width:600px;
+    margin:auto;
+  }
+
+  .price-card.popular{
+    transform:none;
+  }
+
+  .price-card.popular:hover{
+    transform:translateY(-8px);
+  }
+
+  .why-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+}
+
 
 @media(max-width:800px){
 
-  .links{
-    display:none;
+  .featured-work,
+  .visual-story,
+  .gallery-section,
+  .before-after-section,
+  .about-section,
+  .skills-section,
+  .process-section,
+  .pricing-section,
+  .why-section{
+    padding:95px 0;
   }
 
-  .menu{
+  .work-heading,
+  .ba-heading,
+  .process-heading{
     display:block;
   }
 
-  .mobile-menu{
-    position:absolute;
-    top:74px;
-    left:0;
-    width:100%;
-    padding:25px 5%;
-    background:#080808;
-    border-bottom:1px solid #222;
+  .work-heading p,
+  .ba-heading p,
+  .process-heading p{
+    margin-top:25px;
   }
 
-  .mobile-menu.active{
-    display:grid;
-    gap:20px;
-  }
-
-  .mobile-menu a{
-    color:#aaa;
-    font-size:12px;
-    letter-spacing:.18em;
-    text-transform:uppercase;
-  }
-
-  .hero{
-    min-height:100svh;
-    padding:110px 0 55px;
-  }
-
-  .hero h1{
-    font-size:17vw;
-  }
-
-  .hero h1 span:nth-child(2),
-  .hero h1 span:nth-child(3){
-    padding-left:0;
-  }
-
-  .hero-description{
-    font-size:14px;
-  }
-
-  section{
-    padding:85px 0;
-  }
-
-  .section-head{
-    display:block;
-  }
-
-  .section-head p{
-    margin-top:18px;
-  }
-
-  .featured{
+  .featured-grid{
     grid-template-columns:1fr;
   }
 
-  .story{
-    grid-template-columns:1fr;
+  .featured-card.featured-large{
+    grid-column:auto;
+    min-height:520px;
+  }
+
+  .featured-card{
+    min-height:420px;
   }
 
   .story-image{
     height:520px;
   }
 
-  .story-text{
-    padding:55px 30px;
+  .gallery-header{
+    display:block;
+  }
+
+  .gallery-count{
+    margin-top:30px;
+  }
+
+  .masonry-gallery{
+    grid-template-columns:1fr 1fr;
+    grid-auto-rows:180px;
+    gap:8px;
+  }
+
+  .gallery-item,
+  .gallery-item:nth-child(n){
+    grid-column:span 1;
+    grid-row:span 2;
+  }
+
+  .gallery-item:nth-child(3n){
+    grid-row:span 3;
+  }
+
+  .ba-heading{
+    margin-bottom:55px;
+  }
+
+  .ba-slider{
+    aspect-ratio:4/5;
+  }
+
+  .ba-divider span{
+    width:42px;
+    height:42px;
   }
 
   .about-grid{
     grid-template-columns:1fr;
+    gap:50px;
+  }
+
+  .about-meta{
+    margin-top:50px;
+  }
+
+  .skill-row{
+    grid-template-columns:45px 1fr;
+    min-height:105px;
+  }
+
+  .skill-detail{
+    display:none;
+  }
+
+  .process-grid{
+    grid-template-columns:1fr;
+  }
+
+  .process-card{
+    min-height:210px;
+  }
+
+  .process-card h3{
+    margin-top:65px;
+  }
+
+  .why-grid{
+    grid-template-columns:1fr;
+  }
+
+  .why-card{
+    min-height:220px;
+  }
+
+  .why-card h3{
+    margin-top:65px;
+  }
+
+  .info-strip{
+    grid-template-columns:1fr;
+  }
+
+  .info-box{
+    padding:40px 5%;
+  }
+
+  .info-box + .info-box{
+    border-left:0;
+    border-top:1px solid var(--line);
   }
 
   .contact-box{
-    padding:65px 20px;
+    padding:60px 7%;
   }
 
-  footer{
+  .contact-title{
+    font-size:20vw;
+  }
+
+  .footer-top{
     display:block;
   }
 
-  footer div{
-    margin-top:12px;
+  .footer-copy{
+    margin-top:15px;
   }
+
+  .footer-big{
+    margin-top:65px;
+    font-size:22vw;
+  }
+
+  .lightbox{
+    padding:15px;
+  }
+
+  .lightbox-content{
+    width:92vw;
+    height:82vh;
+  }
+
+  .lightbox-close{
+    top:15px;
+    right:15px;
+  }
+
+  .lightbox-prev{
+    left:10px;
+  }
+
+  .lightbox-next{
+    right:10px;
+  }
+
 }
+
+
+/* =========================================================
+   31 — VERY SMALL SCREEN
+========================================================= */
+
+@media(max-width:480px){
+
+  .pricing-grid{
+    width:100%;
+  }
+
+  .price{
+    font-size:55px;
+  }
+
+  .price-card{
+    min-height:520px;
+  }
+
+  .contact-links{
+    flex-direction:column;
+  }
+
+  .contact-link{
+    justify-content:center;
+  }
+
+}
+
+
+/* =========================================================
+   32 — SCROLL REVEAL
+========================================================= */
+
+.reveal{
+  opacity:0;
+  transform:translateY(35px);
+  transition:
+    opacity .8s ease,
+    transform .8s ease;
+}
+
+.reveal.visible{
+  opacity:1;
+  transform:translateY(0);
+}
+
 </style>
-</head>
 
 
-<body>
 
-
-<!-- =========================
-     NAV
-========================= -->
-
-<nav>
-
-  <div class="wrap nav">
-
-    <a class="logo" href="#home">
-      LEO
-    </a>
-
-    <div class="links">
-
-      <a href="#work">Work</a>
-
-      <a href="#about">About</a>
-
-      <a href="#contact">Contact</a>
-
-    </div>
-
-    <button
-      class="menu"
-      id="menuBtn"
-      aria-label="Menu">
-
-      ☰
-
-    </button>
-
-  </div>
-
-
-  <div
-    class="mobile-menu"
-    id="mobileMenu">
-
-    <a href="#work">Work</a>
-
-    <a href="#about">About</a>
-
-    <a href="#contact">Contact</a>
-
-  </div>
-
-</nav>
-
-
-
-<!-- =========================
-     MAIN
-========================= -->
-
-<main id="home">
-
-
-<!-- =========================
-     HERO
-========================= -->
-
-<section class="hero">
-
-
-  <!-- FULL SCREEN IMAGE -->
-
-  <div class="hero-image">
-
-    <img
-      src="images/work-2.jpg"
-      alt="Leo Visual Creator">
-
-    <div class="hero-overlay"></div>
-
-  </div>
-
-
-  <div class="wrap hero-content">
-
-
-    <div class="eyebrow">
-      Visual Creator / Photography / Fashion
-    </div>
-
-
-    <h1>
-
-      <span>CREATE.</span>
-
-      <span>CAPTURE.</span>
-
-      <span>EXPRESS.</span>
-
-    </h1>
-
-
-    <p class="hero-description">
-
-      I'm Leo — a visual creator building my style
-      through photography, fashion, creative edits
-      and digital storytelling.
-
-    </p>
-
-
-    <div class="hero-buttons">
-
-      <a
-        class="btn white"
-        href="#work">
-
-        Explore My Work ↓
-
-      </a>
-
-
-      <a
-        class="btn"
-        href="#contact">
-
-        Contact Me ↗
-
-      </a>
-
-    </div>
-
-
-  </div>
-
-</section>
-
-
-
-<!-- =========================
-     WORK
-========================= -->
-
-<section id="work">
-
-
-  <div class="wrap">
-
-
-    <div class="section-head">
-
-
-      <div>
-
-        <div class="section-number">
-          01 / Selected Work
-        </div>
-
-        <h2>
-          My<br>
-          <em>Work.</em>
-        </h2>
-
-      </div>
-
-
-      <p>
-
-        Photography, fashion and creative
-        visuals — selected from my growing
-        visual archive.
-
-      </p>
-
-
-    </div>
-
-
-
-    <!-- FEATURED 3 -->
-
-    <div class="featured">
-
-
-      <article class="feature-card">
-
-        <div class="feature-image">
-
-          <img
-            src="images/work-1.png"
-            alt="Photography">
-
-        </div>
-
-        <div class="feature-info">
-
-          <small>
-            01 / PHOTOGRAPHY
-          </small>
-
-          <h3>
-            Portraits
-          </h3>
-
-        </div>
-
-      </article>
-
-
-
-      <article class="feature-card">
-
-        <div class="feature-image">
-
-          <img
-            src="images/work-5.jpg"
-            alt="Fashion">
-
-        </div>
-
-        <div class="feature-info">
-
-          <small>
-            02 / FASHION
-          </small>
-
-          <h3>
-            Style & Identity
-          </h3>
-
-        </div>
-
-      </article>
-
-
-
-      <article class="feature-card">
-
-        <div class="feature-image">
-
-          <img
-            src="images/work-9.jpg"
-            alt="Creative">
-
-        </div>
-
-        <div class="feature-info">
-
-          <small>
-            03 / CREATIVE
-          </small>
-
-          <h3>
-            Visual Experiments
-          </h3>
-
-        </div>
-
-      </article>
-
-
-    </div>
-
-  </div>
-
-</section>
-
-
-
-<!-- =========================
-     STORY MODULE
-========================= -->
-
-<section>
-
-
-  <div class="wrap">
-
-
-    <div class="story">
-
-
-      <div class="story-image">
-
-        <img
-          src="images/work-10.jpg"
-          alt="Leo visual story">
-
-      </div>
-
-
-      <div class="story-text">
-
-        <div class="eyebrow">
-          Featured / Visual Story
-        </div>
-
-
-        <h2>
-          Made to<br>
-          <em>be seen.</em>
-        </h2>
-
-
-        <p>
-
-          I like visuals that feel simple
-          at first glance, but stay in your mind.
-          Photography, fashion and creative
-          edits are the tools I use to build
-          that feeling.
-
-        </p>
-
-
-        <div class="hero-buttons">
-
-          <a
-            class="btn"
-            style="color:#080808;border-color:#080808"
-            href="#contact">
-
-            Work With Me ↗
-
-          </a>
-
-        </div>
-
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-
-<!-- =========================
-     GALLERY
-========================= -->
-
-<section>
-
-
-  <div class="wrap">
-
-
-    <div class="section-head">
-
-
-      <div>
-
-        <div class="section-number">
-          02 / Archive
-        </div>
-
-        <h2>
-          The<br>
-          <em>Gallery.</em>
-        </h2>
-
-      </div>
-
-
-      <p>
-
-        A collection of selected frames,
-        portraits, fashion visuals and
-        creative experiments.
-
-      </p>
-
-
-    </div>
-
-
-
-    <div class="gallery">
-
-
-      <div class="gallery-item">
-
-        <img
-          src="images/work-1.png"
-          alt="Leo work 1"
-          data-image>
-
-      </div>
-
-
-      <div class="gallery-item">
-
-        <img
-          src="images/work-2.jpg"
-          alt="Leo work 2"
-          data-image>
-
-      </div>
-
-
-      <div class="gallery-item">
-
-        <img
-          src="images/work-3.jpg"
-          alt="Leo work 3"
-          data-image>
-
-      </div>
-
-
-      <div class="gallery-item">
-
-        <img
-          src="images/work-4.png"
-          alt="Leo work 4"
-          data-image>
-
-      </div>
-
-
-      <div class="gallery-item">
-
-        <img
-          src="images/work-5.jpg"
-          alt="Leo work 5"
-          data-image>
-
-      </div>
-
-
-      <div class="gallery-item">
-
-        <img
-          src="images/work-6.png"
-          alt="Leo work 6"
-          data-image>
-
-      </div>
-
-
-      <div class="gallery-item">
-
-        <img
-          src="images/work-7.png"
-          alt="Leo work 7"
-          data-image>
-
-      </div>
-
-
-      <div class="gallery-item">
-
-        <img
-          src="images/work-8.png"
-          alt="Leo work 8"
-          data-image>
-
-      </div>
-
-
-      <div class="gallery-item">
-
-        <img
-          src="images/work-9.jpg"
-          alt="Leo work 9"
-          data-image>
-
-      </div>
-
-
-      <div class="gallery-item">
-
-        <img
-          src="images/work-10.jpg"
-          alt="Leo work 10"
-          data-image>
-
-      </div>
-
-
-      <div class="gallery-item">
-
-        <img
-          src="images/work-11.png"
-          alt="Leo work 11"
-          data-image>
-
-      </div>
-
-
-      <div class="gallery-item">
-
-        <img
-          src="images/work-12.png"
-          alt="Leo work 12"
-          data-image>
-
-      </div>
-
-
-      <div class="gallery-item">
-
-        <img
-          src="images/work-13.png"
-          alt="Leo work 13"
-          data-image>
-
-      </div>
-
-
-      <div class="gallery-item">
-
-        <img
-          src="images/work-14.png"
-          alt="Leo work 14"
-          data-image>
-
-      </div>
-
-
-      <div class="gallery-item">
-
-        <img
-          src="images/work-15.png"
-          alt="Leo work 15"
-          data-image>
-
-      </div>
-
-
-      <div class="gallery-item">
-
-        <img
-          src="images/work-16.png"
-          alt="Leo work 16"
-          data-image>
-
-      </div>
-
-
-      <div class="gallery-item">
-
-        <img
-          src="images/work-17.jpg"
-          alt="Leo work 17"
-          data-image>
-
-      </div>
-
-
-      <div class="gallery-item">
-
-        <img
-          src="images/work-18.png"
-          alt="Leo work 18"
-          data-image>
-
-      </div>
-
-
-      <div class="gallery-item">
-
-        <img
-          src="images/work-19.png"
-          alt="Leo work 19"
-          data-image>
-
-      </div>
-
-
-    </div>
-
-  </div>
-
-</section>
-
-
-
-<!-- =========================
+<!-- =======================================================
      ABOUT
-========================= -->
-
-<section id="about">
-
-
-  <div class="wrap">
-
-
-    <div class="section-head">
-
-
-      <div>
-
-        <div class="section-number">
-          03 / About
-        </div>
-
-        <h2>
-          About<br>
-          <em>Leo.</em>
-        </h2>
-
-      </div>
-
-
-      <p>
-
-        The person behind the camera,
-        edits, ideas and creative work.
-
-      </p>
-
-
-    </div>
-
-
-
-    <div class="about-grid">
-
-
-      <div class="about-card">
-
-        <p class="big">
-
-          Visuals are how I turn ideas,
-          people and moments into something
-          memorable.
-
-        </p>
-
-
-        <p>
-
-          I'm Leo — exploring photography,
-          fashion, visual editing, content
-          creation and digital creativity.
-
-          This portfolio is my creative space
-          to showcase what I make and what
-          I'm building next.
-
-        </p>
-
-      </div>
-
-
-
-      <div class="about-card">
-
-        <strong>
-          What I Create
-        </strong>
-
-
-        <div class="skills">
-
-          <span class="skill">
-            Photography
-          </span>
-
-          <span class="skill">
-            Portraits
-          </span>
-
-          <span class="skill">
-            Fashion
-          </span>
-
-          <span class="skill">
-            Photo Editing
-          </span>
-
-          <span class="skill">
-            Content Creation
-          </span>
-
-          <span class="skill">
-            Visual Storytelling
-          </span>
-
-          <span class="skill">
-            AI Creative Work
-          </span>
-
-        </div>
-
-      </div>
-
-
-    </div>
-
-  </div>
-
-</section>
-
-
-
-<!-- =========================
-     CONTACT
-========================= -->
+======================================================= -->
 
 <section
-  id="contact"
-  class="contact-section">
+  class="about-section"
+  id="about">
+
+  <div class="container about-grid">
 
 
-  <div class="wrap">
+    <div>
+
+      <div class="label">
+        05 / About
+      </div>
+
+      <h2 class="about-title">
+        THE<br>
+        PERSON<br>
+        BEHIND<br>
+        THE<br>
+        VISUALS.
+      </h2>
+
+    </div>
+
+
+    <div class="about-copy">
+
+      <p>
+
+        I'm <strong>Murugadoss</strong> —
+        a visual creator exploring
+        photography, editing, fashion
+        and digital storytelling.
+
+      </p>
+
+
+      <div class="about-meta">
+
+        <div class="meta-item">
+
+          <span>Based In</span>
+
+          <strong>
+            Tamil Nadu, India
+          </strong>
+
+        </div>
+
+
+        <div class="meta-item">
+
+          <span>Focus</span>
+
+          <strong>
+            Photography & Visuals
+          </strong>
+
+        </div>
+
+
+        <div class="meta-item">
+
+          <span>Creative Brand</span>
+
+          <strong>
+            Leo Visuals
+          </strong>
+
+        </div>
+
+
+        <div class="meta-item">
+
+          <span>Available</span>
+
+          <strong>
+            Creative Projects
+          </strong>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+
+<!-- =======================================================
+     SKILLS
+======================================================= -->
+
+<section class="skills-section">
+
+  <div class="container">
+
+
+    <div class="skills-heading">
+
+      <div class="label">
+        06 / Skills
+      </div>
+
+      <h2>
+        WHAT I<br>
+        DO BEST.
+      </h2>
+
+    </div>
+
+
+    <div class="skill-list">
+
+
+      <div class="skill-row cursor-hover">
+
+        <span class="skill-number">
+          01
+        </span>
+
+        <span class="skill-name">
+          PHOTOGRAPHY
+        </span>
+
+        <span class="skill-detail">
+          Portrait · Fashion · Lifestyle
+        </span>
+
+      </div>
+
+
+      <div class="skill-row cursor-hover">
+
+        <span class="skill-number">
+          02
+        </span>
+
+        <span class="skill-name">
+          PHOTO EDITING
+        </span>
+
+        <span class="skill-detail">
+          Retouch · Colour · Creative
+        </span>
+
+      </div>
+
+
+      <div class="skill-row cursor-hover">
+
+        <span class="skill-number">
+          03
+        </span>
+
+        <span class="skill-name">
+          VISUAL STORYTELLING
+        </span>
+
+        <span class="skill-detail">
+          Concept · Mood · Direction
+        </span>
+
+      </div>
+
+
+      <div class="skill-row cursor-hover">
+
+        <span class="skill-number">
+          04
+        </span>
+
+        <span class="skill-name">
+          CONTENT CREATION
+        </span>
+
+        <span class="skill-detail">
+          Social · Digital · Creative
+        </span>
+
+      </div>
+
+
+      <div class="skill-row cursor-hover">
+
+        <span class="skill-number">
+          05
+        </span>
+
+        <span class="skill-name">
+          AI VISUALS
+        </span>
+
+        <span class="skill-detail">
+          Experimental · Digital Art
+        </span>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =======================================================
+     BOOKING PROCESS
+======================================================= -->
+
+<section class="process-section">
+
+  <div class="container">
+
+
+    <div class="process-heading">
+
+      <div>
+
+        <div class="label">
+          07 / Booking
+        </div>
+
+        <h2>
+          HOW IT<br>
+          WORKS.
+        </h2>
+
+      </div>
+
+
+      <p>
+
+        A simple process from choosing
+        your package to receiving your
+        final visuals.
+
+      </p>
+
+    </div>
+
+
+    <div class="process-grid">
+
+
+      <div class="process-card">
+
+        <span>01</span>
+
+        <h3>
+          Choose
+        </h3>
+
+        <p>
+          Pick the package that
+          fits your session.
+        </p>
+
+      </div>
+
+
+      <div class="process-card">
+
+        <span>02</span>
+
+        <h3>
+          Contact
+        </h3>
+
+        <p>
+          Send your idea and
+          preferred date.
+        </p>
+
+      </div>
+
+
+      <div class="process-card">
+
+        <span>03</span>
+
+        <h3>
+          Plan
+        </h3>
+
+        <p>
+          Confirm location,
+          timing and details.
+        </p>
+
+      </div>
+
+
+      <div class="process-card">
+
+        <span>04</span>
+
+        <h3>
+          Shoot
+        </h3>
+
+        <p>
+          Create the visuals
+          together.
+        </p>
+
+      </div>
+
+
+      <div class="process-card">
+
+        <span>05</span>
+
+        <h3>
+          Deliver
+        </h3>
+
+        <p>
+          Receive the final
+          edited photographs.
+        </p>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =======================================================
+     PRICING
+======================================================= -->
+
+<section
+  class="pricing-section"
+  id="pricing">
+
+  <div class="container">
+
+
+    <div class="pricing-heading">
+
+      <div class="label">
+        08 / Services & Pricing
+      </div>
+
+      <h2>
+        CHOOSE YOUR<br>
+        EXPERIENCE.
+      </h2>
+
+      <p>
+
+        Simple packages for portrait,
+        lifestyle and creative sessions.
+        Custom projects can be discussed
+        separately.
+
+      </p>
+
+    </div>
+
+
+    <div class="pricing-grid">
+
+
+      <!-- BASIC -->
+
+      <article class="price-card">
+
+        <div class="price-top">
+
+          <span>
+            01 / Basic
+          </span>
+
+          <span>
+            STARTER
+          </span>
+
+        </div>
+
+
+        <h3 class="price-name">
+          BASIC
+        </h3>
+
+
+        <div class="price">
+          ₹699
+          <small>/ session</small>
+        </div>
+
+
+        <ul class="price-features">
+
+          <li>
+            30 minute session
+          </li>
+
+          <li>
+            5 edited photos
+          </li>
+
+          <li>
+            Basic editing
+          </li>
+
+          <li>
+            1 outfit
+          </li>
+
+          <li>
+            Digital delivery
+          </li>
+
+        </ul>
+
+
+        <a
+          class="book-button"
+          href="https://wa.me/918870562129?text=Hi%20Murugadoss%2C%20I%27d%20like%20to%20book%20the%20Basic%20Photography%20Package%20%28%E2%82%B9699%29.%20Please%20share%20the%20available%20dates."
+          target="_blank"
+          rel="noopener">
+
+          Book Basic →
+
+        </a>
+
+      </article>
+
+
+
+      <!-- PREMIUM -->
+
+      <article class="price-card popular">
+
+        <div class="popular-badge">
+          MOST POPULAR
+        </div>
+
+
+        <div class="price-top">
+
+          <span>
+            02 / Premium
+          </span>
+
+          <span>
+            RECOMMENDED
+          </span>
+
+        </div>
+
+
+        <h3 class="price-name">
+          PREMIUM
+        </h3>
+
+
+        <div class="price">
+          ₹1,099
+          <small>/ session</small>
+        </div>
+
+
+        <ul class="price-features">
+
+          <li>
+            1 hour session
+          </li>
+
+          <li>
+            10 edited photos
+          </li>
+
+          <li>
+            Advanced editing
+          </li>
+
+          <li>
+            1–2 locations
+          </li>
+
+          <li>
+            2 outfit changes
+          </li>
+
+          <li>
+            Priority delivery
+          </li>
+
+        </ul>
+
+
+        <a
+          class="book-button"
+          href="https://wa.me/918870562129?text=Hi%20Murugadoss%2C%20I%27d%20like%20to%20book%20the%20Premium%20Photography%20Package%20%28%E2%82%B91%2C099%29.%20Please%20share%20the%20available%20dates."
+          target="_blank"
+          rel="noopener">
+
+          Book Premium →
+
+        </a>
+
+      </article>
+
+
+
+      <!-- ULTIMATE -->
+
+      <article class="price-card">
+
+        <div class="price-top">
+
+          <span>
+            03 / Ultimate
+          </span>
+
+          <span>
+            FULL
+          </span>
+
+        </div>
+
+
+        <h3 class="price-name">
+          ULTIMATE
+        </h3>
+
+
+        <div class="price">
+          ₹1,499
+          <small>/ session</small>
+        </div>
+
+
+        <ul class="price-features">
+
+          <li>
+            2 hour session
+          </li>
+
+          <li>
+            20 edited photos
+          </li>
+
+          <li>
+            Advanced editing
+          </li>
+
+          <li>
+            2–3 locations
+          </li>
+
+          <li>
+            3 outfit changes
+          </li>
+
+          <li>
+            Priority delivery
+          </li>
+
+        </ul>
+
+
+        <a
+          class="book-button"
+          href="https://wa.me/918870562129?text=Hi%20Murugadoss%2C%20I%27d%20like%20to%20book%20the%20Ultimate%20Photography%20Package%20%28%E2%82%B91%2C499%29.%20Please%20share%20the%20available%20dates."
+          target="_blank"
+          rel="noopener">
+
+          Book Ultimate →
+
+        </a>
+
+      </article>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =======================================================
+     WHY MURUGADOSS
+======================================================= -->
+
+<section class="why-section">
+
+  <div class="container">
+
+
+    <div class="why-heading">
+
+      <div class="label">
+        09 / The Difference
+      </div>
+
+      <h2>
+        WHY<br>
+        MURUGADOSS?
+      </h2>
+
+    </div>
+
+
+    <div class="why-grid">
+
+
+      <article class="why-card">
+
+        <span>01</span>
+
+        <h3>
+          PERSONAL
+        </h3>
+
+        <p>
+          Every project gets a
+          personal creative approach.
+        </p>
+
+      </article>
+
+
+      <article class="why-card">
+
+        <span>02</span>
+
+        <h3>
+          CUSTOM
+        </h3>
+
+        <p>
+          Visuals are shaped around
+          the person and the idea.
+        </p>
+
+      </article>
+
+
+      <article class="why-card">
+
+        <span>03</span>
+
+        <h3>
+          CREATIVE
+        </h3>
+
+        <p>
+          Focus on atmosphere,
+          composition and storytelling.
+        </p>
+
+      </article>
+
+
+      <article class="why-card">
+
+        <span>04</span>
+
+        <h3>
+          DIRECT
+        </h3>
+
+        <p>
+          Simple communication directly
+          with the creator.
+        </p>
+
+      </article>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =======================================================
+     SERVICE AREA + SEASONAL OFFER
+======================================================= -->
+
+<section class="info-strip">
+
+
+  <div class="info-box">
+
+    <span>
+      Service Area
+    </span>
+
+    <strong>
+      Virudhunagar & Surrounding Areas
+    </strong>
+
+    <p>
+      Location and travel requirements
+      can be discussed before booking.
+    </p>
+
+  </div>
+
+
+  <div class="info-box">
+
+    <span>
+      Seasonal / Special
+    </span>
+
+    <strong>
+      Custom Offers Available
+    </strong>
+
+    <p>
+      Festival, birthday, fashion and
+      special creative sessions can be
+      discussed directly.
+    </p>
+
+  </div>
+
+
+</section>
+
+
+
+<!-- =======================================================
+     CONTACT
+======================================================= -->
+
+<section
+  class="contact-section"
+  id="contact">
+
+  <div class="container">
 
 
     <div class="contact-box">
 
 
-      <div class="eyebrow">
-        Available for Creative Work
+      <div class="contact-label">
+        10 / Let's Create
       </div>
 
 
-      <h2>
-
-        LET'S CREATE<br>
-
-        <em>SOMETHING.</em>
-
+      <h2 class="contact-title">
+        LET'S<br>
+        CREATE.
       </h2>
 
 
-      <p>
+      <p class="contact-copy">
 
-        For collaborations, photography,
-        creative projects or just to connect,
-        reach out through Instagram,
-        WhatsApp or email.
+        Have an idea, a shoot in mind,
+        or a creative project you want
+        to build? Let's talk.
 
       </p>
 
@@ -1420,11 +4825,9 @@ footer{
       <div class="contact-links">
 
 
-        <!-- INSTAGRAM -->
-
         <a
-          class="contact-btn"
-          href="https://instagram.com/leodosssss"
+          class="contact-link"
+          href="https://www.instagram.com/leo_visualss/"
           target="_blank"
           rel="noopener">
 
@@ -1433,11 +4836,9 @@ footer{
         </a>
 
 
-        <!-- WHATSAPP -->
-
         <a
-          class="contact-btn"
-          href="https://wa.me/91+ 8870562129"
+          class="contact-link"
+          href="https://wa.me/918870562129"
           target="_blank"
           rel="noopener">
 
@@ -1446,11 +4847,9 @@ footer{
         </a>
 
 
-        <!-- EMAIL -->
-
         <a
-          class="contact-btn"
-          href="mailto:YOUR_murugadoss2211@gmail.com">
+          class="contact-link"
+          href="mailto:murugadoss2211@gmail.com">
 
           Email ↗
 
@@ -1467,25 +4866,33 @@ footer{
 </section>
 
 
-</main>
 
-
-
-<!-- =========================
+<!-- =======================================================
      FOOTER
-========================= -->
+======================================================= -->
 
-<footer class="wrap">
+<footer class="footer">
 
-  <strong style="color:#ddd">
-    LEO
-  </strong>
+  <div class="container">
 
 
-  <div>
+    <div class="footer-top">
 
-    © <span id="year"></span>
-    Leo · Visual Creator
+      <div class="footer-brand">
+        MURUGADOSS · LEO VISUALS
+      </div>
+
+      <div class="footer-copy">
+        © 2026 Murugadoss · Visual Creator
+      </div>
+
+    </div>
+
+
+    <div class="footer-big">
+      MURUGADOSS
+    </div>
+
 
   </div>
 
@@ -1493,134 +4900,241 @@ footer{
 
 
 
-<!-- =========================
-     LIGHTBOX
-========================= -->
-
-<div
-  class="lightbox"
-  id="lightbox">
-
-
-  <button
-    class="close"
-    id="close">
-
-    ×
-
-  </button>
-
-
-  <img
-    id="lightboxImage"
-    src=""
-    alt="">
-
-</div>
-
-
+<!-- =======================================================
+     JAVASCRIPT
+======================================================= -->
 
 <script>
 
-/* YEAR */
+/* =========================================================
+   01 — THEME TOGGLE
+========================================================= */
 
-document.getElementById("year").textContent =
-new Date().getFullYear();
+const themeToggle =
+  document.getElementById("themeToggle");
+
+themeToggle.addEventListener("click", () => {
+
+  document.body.classList.toggle("light");
+
+  if(document.body.classList.contains("light")){
+
+    themeToggle.textContent = "☀";
+
+  }else{
+
+    themeToggle.textContent = "☾";
+
+  }
+
+});
 
 
 
-/* MOBILE MENU */
+/* =========================================================
+   02 — CUSTOM CURSOR
+========================================================= */
 
-const menuBtn =
-document.getElementById("menuBtn");
+const cursor =
+  document.querySelector(".custom-cursor");
 
-const mobileMenu =
-document.getElementById("mobileMenu");
+if(cursor && window.innerWidth > 800){
+
+  document.addEventListener("mousemove", (event) => {
+
+    cursor.style.left = event.clientX + "px";
+    cursor.style.top = event.clientY + "px";
+
+  });
 
 
-menuBtn.addEventListener(
-  "click",
-  function(){
+  document.querySelectorAll(".cursor-hover")
+    .forEach(element => {
 
-    mobileMenu.classList.toggle("active");
+      element.addEventListener("mouseenter", () => {
+        cursor.classList.add("active");
+      });
+
+      element.addEventListener("mouseleave", () => {
+        cursor.classList.remove("active");
+      });
+
+    });
+
+}
+
+
+
+/* =========================================================
+   03 — BEFORE / AFTER SLIDERS
+========================================================= */
+
+document.querySelectorAll(".ba-slider")
+  .forEach(slider => {
+
+    const range =
+      slider.querySelector(".ba-range");
+
+    if(!range) return;
+
+    const updateSlider = () => {
+
+      const value = range.value;
+
+      slider.style.setProperty(
+        "--position",
+        value + "%"
+      );
+
+    };
+
+    range.addEventListener(
+      "input",
+      updateSlider
+    );
+
+    updateSlider();
+
+  });
+
+
+
+/* =========================================================
+   04 — LIGHTBOX
+========================================================= */
+
+const lightbox =
+  document.getElementById("lightbox");
+
+const lightboxImage =
+  document.getElementById("lightboxImage");
+
+const lightboxCaption =
+  document.getElementById("lightboxCaption");
+
+const lightboxClose =
+  document.getElementById("lightboxClose");
+
+const lightboxPrev =
+  document.getElementById("lightboxPrev");
+
+const lightboxNext =
+  document.getElementById("lightboxNext");
+
+
+const galleryItems =
+  Array.from(
+    document.querySelectorAll(".gallery-item")
+  );
+
+
+let currentImage = 0;
+
+
+function openLightbox(index){
+
+  if(!galleryItems.length) return;
+
+  currentImage = index;
+
+  const item =
+    galleryItems[currentImage];
+
+  lightboxImage.src =
+    item.dataset.image;
+
+  lightboxImage.alt =
+    item.dataset.title || "Murugadoss work";
+
+  lightboxCaption.textContent =
+    item.dataset.title || "";
+
+  lightbox.classList.add("open");
+
+  lightbox.setAttribute(
+    "aria-hidden",
+    "false"
+  );
+
+  document.body.style.overflow = "hidden";
+
+}
+
+
+function closeLightbox(){
+
+  lightbox.classList.remove("open");
+
+  lightbox.setAttribute(
+    "aria-hidden",
+    "true"
+  );
+
+  document.body.style.overflow = "";
+
+}
+
+
+function showNext(){
+
+  currentImage =
+    (currentImage + 1) %
+    galleryItems.length;
+
+  openLightbox(currentImage);
+
+}
+
+
+function showPrevious(){
+
+  currentImage =
+    (currentImage - 1 +
+      galleryItems.length) %
+    galleryItems.length;
+
+  openLightbox(currentImage);
+
+}
+
+
+galleryItems.forEach(
+  (item, index) => {
+
+    item.addEventListener(
+      "click",
+      () => {
+
+        openLightbox(index);
+
+      }
+    );
 
   }
 );
 
 
-mobileMenu
-.querySelectorAll("a")
-.forEach(function(link){
-
-  link.addEventListener(
-    "click",
-    function(){
-
-      mobileMenu.classList.remove("active");
-
-    }
-  );
-
-});
-
-
-
-/* LIGHTBOX */
-
-const lightbox =
-document.getElementById("lightbox");
-
-const lightboxImage =
-document.getElementById("lightboxImage");
-
-const closeButton =
-document.getElementById("close");
-
-
-document
-.querySelectorAll("[data-image]")
-.forEach(function(image){
-
-  image.addEventListener(
-    "click",
-    function(){
-
-      lightboxImage.src =
-      image.src;
-
-      lightboxImage.alt =
-      image.alt;
-
-      lightbox.classList.add("active");
-
-      document.body.classList.add("lock");
-
-    }
-  );
-
-});
-
-
-function closeLightbox(){
-
-  lightbox.classList.remove("active");
-
-  document.body.classList.remove("lock");
-
-  lightboxImage.src="";
-
-}
-
-
-closeButton.addEventListener(
+lightboxClose.addEventListener(
   "click",
   closeLightbox
 );
 
 
+lightboxNext.addEventListener(
+  "click",
+  showNext
+);
+
+
+lightboxPrev.addEventListener(
+  "click",
+  showPrevious
+);
+
+
 lightbox.addEventListener(
   "click",
-  function(event){
+  (event) => {
 
     if(event.target === lightbox){
 
@@ -1634,7 +5148,16 @@ lightbox.addEventListener(
 
 document.addEventListener(
   "keydown",
-  function(event){
+  (event) => {
+
+    if(
+      !lightbox.classList.contains("open")
+    ){
+
+      return;
+
+    }
+
 
     if(event.key === "Escape"){
 
@@ -1642,10 +5165,133 @@ document.addEventListener(
 
     }
 
+
+    if(event.key === "ArrowRight"){
+
+      showNext();
+
+    }
+
+
+    if(event.key === "ArrowLeft"){
+
+      showPrevious();
+
+    }
+
   }
 );
 
+
+
+/* =========================================================
+   05 — SCROLL REVEAL
+========================================================= */
+
+const revealElements =
+  document.querySelectorAll(
+    ".featured-card, .story-copy, .story-image, .skill-row, .price-card, .why-card"
+  );
+
+
+const revealObserver =
+  new IntersectionObserver(
+    (entries) => {
+
+      entries.forEach(entry => {
+
+        if(entry.isIntersecting){
+
+          entry.target.classList.add(
+            "visible"
+          );
+
+          revealObserver.unobserve(
+            entry.target
+          );
+
+        }
+
+      });
+
+    },
+    {
+      threshold:.12
+    }
+  );
+
+
+revealElements.forEach(element => {
+
+  element.classList.add("reveal");
+
+  revealObserver.observe(element);
+
+});
+
+
+
+/* =========================================================
+   06 — MOBILE MENU FALLBACK
+========================================================= */
+
+const navLinks =
+  document.querySelectorAll(".nav-links a");
+
+
+navLinks.forEach(link => {
+
+  link.addEventListener(
+    "click",
+    () => {
+
+      document.body.style.overflow = "";
+
+    }
+  );
+
+});
+
+
+
+/* =========================================================
+   07 — IMAGE ERROR HANDLING
+========================================================= */
+
+document.querySelectorAll("img")
+  .forEach(img => {
+
+    img.addEventListener(
+      "error",
+      () => {
+
+        img.parentElement
+          ?.classList.add("image-error");
+
+      }
+    );
+
+  });
+
+
 </script>
+
+
+<!-- =======================================================
+     CUSTOM CURSOR ELEMENT
+======================================================= -->
+
+<div
+  class="custom-cursor"
+  aria-hidden="true">
+</div>
+
+
+<!-- =======================================================
+     END OF WEBSITE
+======================================================= -->
 
 </body>
 </html>
+  
+
